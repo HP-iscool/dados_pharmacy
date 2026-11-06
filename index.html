@@ -1,0 +1,5993 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>dado's happy pharmacy ♡</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #fffaf0;
+    color: #514b48;
+    font-family: "Malgun Gothic", sans-serif;
+}
+
+header {
+    background: #d8f0df;
+    padding: 20px 7%;
+    border-bottom: 4px solid #b8dfc5;
+}
+
+.header-inner {
+    max-width: 1100px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.logo {
+    color: #47765a;
+    font-size: 27px;
+    font-weight: 900;
+    letter-spacing: -1px;
+}
+
+.logo span {
+    color: #ed9a9f;
+}
+
+.header-info {
+    font-size: 12px;
+    color: #64816c;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+nav button {
+    background: #fffdf5;
+    color: #53745b;
+    border: 2px solid #b9d9bd;
+    border-radius: 30px;
+    padding: 10px 19px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+nav button:hover {
+    background: #f7dce1;
+    border-color: #efaeb8;
+    transform: translateY(-2px);
+}
+
+main {
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+.hero {
+    background: #f9e2e6;
+    border: 3px solid white;
+    border-radius: 30px;
+    padding: 55px 25px;
+    text-align: center;
+    box-shadow: 0 5px 0 #edc8cf;
+}
+
+.hero-label {
+    display: inline-block;
+    background: white;
+    color: #dc929e;
+    border-radius: 20px;
+    padding: 7px 17px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.hero h1 {
+    color: #a85f70;
+    font-size: clamp(32px, 6vw, 53px);
+    margin: 22px 0 10px;
+}
+
+.hero p {
+    line-height: 1.9;
+    color: #916e72;
+}
+
+.main-button {
+    background: #82bd91;
+    border: none;
+    border-radius: 30px;
+    padding: 14px 30px;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 0 4px 0 #629d72;
+    margin-top: 15px;
+}
+
+.main-button:hover {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 #629d72;
+}
+
+.section {
+    margin-top: 45px;
+}
+
+.section-title {
+    color: #638d6c;
+    font-size: 23px;
+    margin-bottom: 20px;
+}
+
+.section-desc {
+    color: #8e817a;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 17px;
+}
+
+.menu-card {
+    border-radius: 20px;
+    padding: 25px 18px;
+    min-height: 145px;
+    cursor: pointer;
+    transition: 0.2s;
+    border: 3px solid white;
+}
+
+.menu-card:hover {
+    transform: translateY(-5px);
+}
+
+.menu-card h3 {
+    margin: 5px 0 10px;
+}
+
+.menu-card p {
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.pink {
+    background: #f9e0e5;
+    color: #a96778;
+}
+
+.yellow {
+    background: #fff0c9;
+    color: #a38443;
+}
+
+.blue {
+    background: #dceafa;
+    color: #6284a8;
+}
+
+.green {
+    background: #dcefe0;
+    color: #638b6b;
+}
+
+.purple {
+    background: #e9e1f6;
+    color: #8875aa;
+}
+
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+}
+
+.page-content {
+    background: white;
+    border: 3px solid #e4eee1;
+    border-radius: 22px;
+    padding: 30px;
+    min-height: 300px;
+    line-height: 1.9;
+}
+
+.page-content h1 {
+    color: #648e6c;
+}
+
+
+.contact-banner {
+    background: #fff0c9;
+    border: 3px dashed #e8c98a;
+    border-radius: 20px;
+    padding: 23px;
+    margin-top: 30px;
+    text-align: center;
+}
+
+.contact-banner h3 {
+    color: #a38443;
+    margin-top: 0;
+}
+
+.contact-banner p {
+    color: #927c53;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.contact-banner button {
+    background: #edabb7;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 12px 23px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.contact-banner button:hover {
+    background: #dc929f;
+    transform: translateY(-2px);
+}
+
+/* 상품 진열대 */
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    margin-top: 28px;
+}
+
+.product-card {
+    background: #fffaf0;
+    border: 2px solid #f2dfc8;
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    transition: 0.2s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 7px 16px rgba(180, 145, 110, 0.15);
+}
+
+.product-picture {
+    background: #fff0e5;
+    border-radius: 16px;
+    height: 115px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 55px;
+    margin-bottom: 15px;
+}
+
+.product-tag {
+    display: inline-block;
+    background: #f9dce5;
+    color: #b87589;
+    border-radius: 20px;
+    padding: 5px 11px;
+    font-size: 11px;
+    margin-bottom: 9px;
+}
+
+.product-card h3 {
+    color: #8f7180;
+    margin: 5px 0;
+}
+
+.product-korean {
+    color: #a28d91;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+.product-card p {
+    color: #a28d91;
+    font-size: 13px;
+    line-height: 1.5;
+    margin: 5px 0;
+}
+
+.product-price {
+    color: #bd8293;
+    font-weight: bold;
+    margin-top: 12px;
+}
+
+.shop-notice {
+    color: #b09b9e;
+    font-size: 12px;
+    text-align: center;
+    margin-top: 22px;
+}
+
+/* 페이지 넘기기 */
+
+.product-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin: 28px 0;
+}
+
+.product-pagination button {
+    background: white;
+    color: #b77e91;
+    border: 2px solid #f0d5dc;
+    border-radius: 12px;
+    min-width: 38px;
+    padding: 8px 12px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.product-pagination button:hover,
+.product-pagination button.current {
+    background: #edabb7;
+    color: white;
+    border-color: #edabb7;
+}
+
+/* 상품 카드 버튼 */
+
+.product-card {
+    width: 100%;
+    font-family: inherit;
+    color: inherit;
+    cursor: pointer;
+}
+
+/* 상품 상세 팝업 */
+
+.product-modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(65, 55, 60, 0.48);
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.product-modal-overlay.active {
+    display: flex;
+}
+
+.product-modal {
+    position: relative;
+    background: #fffaf5;
+    border: 4px solid white;
+    border-radius: 25px;
+    box-shadow: 0 10px 35px rgba(50, 30, 40, 0.2);
+    width: 100%;
+    max-width: 420px;
+    padding: 30px;
+    text-align: center;
+    animation: modalAppear 0.2s ease-out;
+}
+
+@keyframes modalAppear {
+    from {
+        opacity: 0;
+        transform: translateY(12px) scale(0.96);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.product-modal-close {
+    position: absolute;
+    top: 12px;
+    right: 15px;
+    background: #f9e0e5;
+    color: #a96778;
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.product-modal-picture {
+    font-size: 75px;
+    margin: 15px 0;
+}
+
+.product-modal h2 {
+    color: #8f7180;
+    margin-bottom: 8px;
+}
+
+.product-modal-tag {
+    display: inline-block;
+    background: #f9dce5;
+    color: #b87589;
+    border-radius: 20px;
+    padding: 5px 12px;
+    font-size: 11px;
+}
+
+.product-modal-description {
+    color: #927c82;
+    line-height: 1.9;
+    white-space: pre-line;
+    margin: 20px 0;
+}
+
+.product-modal-price {
+    color: #bd8293;
+    font-size: 19px;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+.product-modal-confirm {
+    background: #edabb7;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 11px 25px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* 특별 상품 주의 문구 */
+
+.product-modal-warning {
+    display: none;
+    background: #fff5d9;
+    color: #a17c45;
+    border: 1px solid #f2dfb5;
+    border-radius: 15px;
+    padding: 13px 16px;
+    margin: 15px 0;
+    font-size: 13px;
+    line-height: 1.8;
+    white-space: pre-line;
+    text-align: left;
+}
+
+
+/* 판매 중지 버튼 */
+
+.product-modal-confirm:disabled {
+    background: #d8d2d3;
+    color: #fff;
+    cursor: not-allowed;
+    opacity: 0.8;
+}
+
+
+/* 버튼에 마우스를 올렸을 때 */
+
+.product-modal-confirm:not(:disabled):hover {
+    background: #df91a2;
+    transform: translateY(-2px);
+    transition: 0.2s;
+}
+
+/* 장바구니 상품 */
+.cart-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: #fff8f5;
+    border: 2px solid #f5e5e5;
+    border-radius: 18px;
+    padding: 15px;
+    margin: 15px 0;
+}
+
+.cart-item-picture {
+    font-size: 38px;
+}
+
+.cart-item-info {
+    flex: 1;
+}
+
+.cart-item-info h3 {
+    color: #8f7180;
+    margin: 0 0 5px;
+}
+
+.cart-item-info p {
+    color: #bd8293;
+    font-size: 13px;
+    margin: 4px 0;
+}
+
+.cart-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.cart-controls button,
+.cart-remove {
+    border: none;
+    border-radius: 9px;
+    background: #f9dce5;
+    color: #a96778;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.cart-remove {
+    background: #f3e5e5;
+}
+
+.cart-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 2px dashed #ead9d9;
+    padding-top: 20px;
+    margin-top: 25px;
+    color: #8f7180;
+}
+
+.cart-total strong {
+    color: #bd8293;
+    font-size: 22px;
+}
+
+.cart-empty {
+    text-align: center;
+    color: #b09b9e;
+    padding: 40px 10px;
+    line-height: 2;
+}
+
+.modal-cart-message {
+    color: #79a783;
+    font-size: 13px;
+    font-weight: bold;
+    min-height: 20px;
+    margin: 12px 0;
+}
+
+@media (max-width: 650px) {
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+footer {
+    margin-top: 70px;
+    padding: 35px 7%;
+    background: #d8f0df;
+    color: #64816c;
+    text-align: center;
+    font-size: 12px;
+    line-height: 2;
+}
+
+@media (max-width: 650px) {
+    .menu-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero {
+        padding: 40px 15px;
+    }
+
+    nav {
+        gap: 7px;
+    }
+
+    nav button {
+        padding: 9px 13px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 380px) {
+    .menu-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 회원증 */
+#memberNameInput {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    margin: 20px auto 12px;
+    padding: 13px;
+    border: 2px solid #f0d5dc;
+    border-radius: 13px;
+    font-family: inherit;
+    text-align: center;
+    outline: none;
+}
+
+.member-card {
+    max-width: 390px;
+    margin: 30px auto;
+    padding: 23px;
+    border: 4px solid white;
+    border-radius: 25px;
+    background: linear-gradient(135deg, #f9dce5, #fff0c9, #dcefe0);
+    box-shadow: 0 5px 0 #e8d8d8;
+    color: #916e72;
+    text-align: center;
+}
+
+.member-card-top,
+.member-card-bottom {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.member-card-title {
+    margin-top: 25px;
+    font-size: 13px;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+.member-card-emoji {
+    font-size: 55px;
+    margin: 15px 0 5px;
+}
+
+.member-card-name {
+    font-size: 25px;
+    font-weight: bold;
+    color: #a85f70;
+    margin: 10px 0;
+}
+
+.member-card-number {
+    font-size: 11px;
+    color: #a28d91;
+    margin-bottom: 25px;
+}
+
+.member-card-bottom {
+    border-top: 1px dashed #d7b6b9;
+    padding-top: 12px;
+}
+
+/* 주문하기 */
+#checkoutButton {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    margin: 25px auto;
+}
+
+#checkoutButton:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+#orderMessage {
+    text-align: center;
+    color: #79a783;
+    font-weight: bold;
+    line-height: 1.8;
+    margin: 15px 0;
+}
+
+/* 주문 내역 */
+.order-history-card {
+    background: #fff8f5;
+    border: 2px solid #f5e5e5;
+    border-radius: 18px;
+    padding: 18px;
+    margin: 15px 0;
+    color: #8f7180;
+}
+
+.order-history-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+    font-size: 12px;
+    color: #b28c98;
+    border-bottom: 1px dashed #e8d4d9;
+    padding-bottom: 10px;
+}
+
+.order-history-products {
+    line-height: 1.9;
+    margin: 12px 0;
+    font-size: 14px;
+}
+
+.order-history-total {
+    text-align: right;
+    font-weight: bold;
+    color: #bd8293;
+}
+
+.order-empty {
+    text-align: center;
+    color: #b09b9e;
+    padding: 25px 10px;
+    line-height: 2;
+}
+
+
+/* 배송 현황 */
+
+.delivery-status-area {
+    margin: 20px 0;
+    padding: 18px;
+    background: linear-gradient(135deg, #fff8fa, #f8f3ff);
+    border: 1px solid #f0dce8;
+    border-radius: 17px;
+}
+
+.delivery-status-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+    color: #987d89;
+    font-size: 14px;
+}
+
+.delivery-status-title strong {
+    color: #bd8298;
+    font-size: 13px;
+}
+
+/* 진행 막대 */
+
+.delivery-progress {
+    height: 7px;
+    background: #eee3e9;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.delivery-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #edb5c8, #c6b3e8);
+    border-radius: 20px;
+    transition: width 0.6s ease;
+}
+
+/* 배송 단계 */
+
+.delivery-timeline {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 3px;
+}
+
+.delivery-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+    min-width: 0;
+    text-align: center;
+    color: #b9aab2;
+    font-size: 10px;
+    line-height: 1.4;
+}
+
+.delivery-step-circle {
+    width: 26px;
+    height: 26px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: #eee8ed;
+    color: #aa9ba4;
+    font-size: 11px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.delivery-step.completed {
+    color: #8f9e91;
+    font-weight: bold;
+}
+
+.delivery-step.completed .delivery-step-circle {
+    background: #d9eedf;
+    color: #668b70;
+}
+
+.delivery-step.current {
+    color: #a65e79;
+    font-weight: bold;
+}
+
+.delivery-step.current .delivery-step-circle {
+    background: #edc4d1;
+    color: #995f74;
+    box-shadow: 0 0 0 4px rgba(237, 196, 209, 0.25);
+}
+
+/* 택배 정보 */
+
+.delivery-information {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 9px 12px;
+    margin-top: 20px;
+    padding-top: 14px;
+    border-top: 1px dashed #e6d5df;
+    color: #a28d96;
+    font-size: 12px;
+}
+
+.delivery-information strong {
+    color: #8f7180;
+    text-align: right;
+}
+
+/* 모바일 */
+
+@media (max-width: 500px) {
+    .delivery-status-area {
+        padding: 14px 9px;
+    }
+
+    .delivery-step {
+        font-size: 9px;
+    }
+
+    .delivery-step-circle {
+        width: 23px;
+        height: 23px;
+    }
+}
+
+
+/* 주문 내역 삭제 버튼 */
+.order-history-card {
+    position: relative;
+}
+
+.order-delete-button {
+    border: none;
+    background: #f9dce5;
+    color: #a96778;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    font-size: 17px;
+    cursor: pointer;
+    margin-left: auto;
+}
+
+.order-delete-button:hover {
+    background: #edabb7;
+    color: white;
+}
+
+/* 삭제 확인 팝업 버튼 */
+.delete-order-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.delete-order-buttons button {
+    border: none;
+    border-radius: 20px;
+    padding: 10px 17px;
+    background: #f9dce5;
+    color: #a96778;
+    font-family: inherit;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.delete-order-buttons button:last-child {
+    background: #edabb7;
+    color: white;
+}
+
+/* 특별 상품 카드 */
+
+.special-product-card {
+    background: linear-gradient(
+        145deg,
+        #fff5fa,
+        #f6efff
+    );
+
+    border: 1px solid #ead5e9;
+    border-radius: 20px;
+
+    box-shadow: 0 4px 12px rgba(180, 135, 165, 0.12);
+
+    transition: 0.25s;
+    cursor: pointer;
+}
+
+.special-product-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow: 0 8px 18px rgba(180, 135, 165, 0.2);
+
+    border-color: #d9b5d9;
+}
+
+
+/* 특별 상품 이름 */
+
+.special-product-card h3 {
+    color: #98718f;
+}
+
+
+/* 특별 상품 가격 */
+
+.special-product-card p {
+    color: #bd8293;
+    font-weight: bold;
+}
+
+
+/* 특별 상품 태그 */
+
+.special-product-card .product-tag {
+    background: #eadcf1;
+    color: #987ba7;
+    border-radius: 12px;
+    padding: 4px 10px;
+}
+
+/* 특별 상품 상태 배지 */
+
+.special-status {
+    display: inline-block;
+    padding: 5px 12px;
+    margin: 8px 0;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+/* 판매 중지 */
+
+.status-stopped {
+    background: #e7e2e3;
+    color: #898083;
+}
+
+/* 주의 상품 */
+
+.status-warning {
+    background: #fff0ce;
+    color: #ad8547;
+}
+
+/* 특별 상품 */
+
+.status-special {
+    background: #eadcf5;
+    color: #9273a8;
+}
+
+
+/* EXPERIENCE 모드 선택 화면 */
+
+.experience-home {
+    text-align: center;
+    margin: 35px auto;
+}
+
+.experience-home h2 {
+    color: #987d88;
+    margin-bottom: 25px;
+}
+
+
+/* 모드 버튼 배치 */
+
+.experience-mode {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 30px auto;
+    max-width: 650px;
+}
+
+
+/* 공통 버튼 */
+
+.experience-mode button {
+    flex: 1;
+    min-height: 145px;
+    padding: 25px 15px;
+
+    border: 2px solid transparent;
+    border-radius: 25px;
+
+    font-size: 19px;
+    font-weight: bold;
+
+    cursor: pointer;
+    transition: 0.25s;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+
+/* 버튼 안의 작은 설명 */
+
+.experience-mode button small {
+    font-size: 12px;
+    font-weight: normal;
+    opacity: 0.8;
+}
+
+
+/* 다도 레시피 모드 */
+
+.experience-mode button:first-child {
+    background: linear-gradient(
+        145deg,
+        #fff0f3,
+        #fce0e9
+    );
+
+    color: #bd8293;
+    border-color: #f2d0dc;
+}
+
+.experience-mode button:first-child:hover {
+    background: #f9dce7;
+    border-color: #e8afc2;
+    transform: translateY(-5px);
+    box-shadow: 0 8px 18px rgba(200, 140, 160, 0.18);
+}
+
+
+/* 자유 제조 모드 */
+
+.experience-mode button:last-child {
+    background: linear-gradient(
+        145deg,
+        #eef7ff,
+        #dceeff
+    );
+
+    color: #759bbd;
+    border-color: #d1e5f7;
+}
+
+.experience-mode button:last-child:hover {
+    background: #dceeff;
+    border-color: #a9cce9;
+    transform: translateY(-5px);
+    box-shadow: 0 8px 18px rgba(120, 160, 200, 0.18);
+}
+
+
+/* 제조실 내부 */
+
+.experience-lab {
+    max-width: 850px;
+    margin: 30px auto;
+    padding: 25px;
+    background: #fffafd;
+    border: 1px solid #f0dfe8;
+    border-radius: 25px;
+}
+
+
+/* 뒤로 가기 버튼 */
+
+.experience-lab > button {
+    background: #f5edf1;
+    color: #987d88;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 18px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.experience-lab > button:hover {
+    background: #eddae4;
+}
+
+
+/* 모바일 화면 */
+
+@media (max-width: 600px) {
+
+    .experience-mode {
+        flex-direction: column;
+        padding: 0 10px;
+    }
+
+    .experience-mode button {
+        min-height: 115px;
+    }
+
+    .experience-lab {
+        padding: 15px;
+    }
+
+}
+
+
+/* 제조실 전체 배치 */
+
+.lab-workspace {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    margin-top: 25px;
+}
+
+
+/* 재료 선반 */
+
+.ingredient-area,
+.bottle-area {
+    background: #fff9fc;
+    border: 1px solid #f0dfe8;
+    border-radius: 22px;
+    padding: 20px;
+    text-align: center;
+}
+
+.ingredient-area h3,
+.bottle-area h3 {
+    color: #a77f91;
+}
+
+.ingredient-area p {
+    color: #aa929b;
+    font-size: 13px;
+}
+
+
+/* 재료 진열 */
+
+.ingredient-shelf {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.ingredient-item {
+    background: white;
+    border: 1px solid #f0e3e9;
+    border-radius: 15px;
+    padding: 12px 5px;
+    cursor: grab;
+    touch-action: none;
+    user-select: none;
+    transition: 0.2s;
+}
+
+.ingredient-item:hover {
+    background: #fff0f5;
+    transform: translateY(-3px);
+    border-color: #e8bfd0;
+}
+
+.ingredient-item:active {
+    cursor: grabbing;
+}
+
+.ingredient-item span {
+    display: block;
+    font-size: 27px;
+    margin-bottom: 5px;
+}
+
+.ingredient-item small {
+    color: #987d88;
+    font-size: 11px;
+}
+
+
+/* 드래그 중인 재료 */
+
+.ingredient-ghost {
+    position: fixed;
+    z-index: 9999;
+    pointer-events: none;
+    font-size: 40px;
+    transform: translate(-50%, -50%);
+    filter: drop-shadow(0 4px 5px rgba(0,0,0,0.15));
+}
+
+
+/* 투명한 유리 약병 */
+
+.medicine-bottle {
+    width: 150px;
+    height: 190px;
+    margin: 25px auto 15px;
+    position: relative;
+    overflow: visible;
+
+    background: linear-gradient(
+        110deg,
+        rgba(255,255,255,0.85),
+        rgba(225,235,255,0.35),
+        rgba(255,255,255,0.75)
+    );
+
+    border: 3px solid rgba(190, 190, 220, 0.8);
+    border-radius: 25px 25px 35px 35px;
+
+    box-shadow:
+        inset 8px 0 12px rgba(255,255,255,0.8),
+        inset -5px 0 10px rgba(180,170,220,0.15),
+        0 7px 15px rgba(150,130,180,0.15);
+}
+
+/* 약병 뚜껑 */
+
+.medicine-bottle::before {
+    content: "";
+    position: absolute;
+    top: -19px;
+    left: 40px;
+    width: 64px;
+    height: 18px;
+
+    background: linear-gradient(#e6d6ed, #cbb5d8);
+    border: 2px solid #c6aaca;
+    border-radius: 7px 7px 2px 2px;
+}
+
+/* 병 안의 색깔 있는 약 */
+
+.bottle-contents {
+    position: absolute;
+    left: 4px;
+    right: 4px;
+    bottom: 4px;
+    height: 0%;
+
+    border-radius: 8px 8px 28px 28px;
+    background: transparent;
+    opacity: 0.85;
+    transition: height 0.4s, background 0.4s;
+}
+
+/* 유리병의 빛 반사 */
+
+.bottle-shine {
+    position: absolute;
+    top: 18px;
+    left: 13px;
+    width: 13px;
+    height: 105px;
+
+    background: rgba(255,255,255,0.55);
+    border-radius: 20px;
+    transform: rotate(3deg);
+    pointer-events: none;
+}
+
+
+/* 약병 흔들림 */
+
+.bottle-shake {
+    animation: bottleShake 0.35s ease;
+}
+
+@keyframes bottleShake {
+    0%, 100% { transform: rotate(0); }
+    25% { transform: rotate(-5deg); }
+    50% { transform: rotate(5deg); }
+    75% { transform: rotate(-3deg); }
+}
+
+
+/* 재료 개수 */
+
+.ingredient-count {
+    color: #a77f91;
+    font-weight: bold;
+    margin: 12px;
+}
+
+
+/* 다시 시작 버튼 */
+
+.clear-ingredients {
+    background: #f4e9f0;
+    color: #987d88;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 18px;
+    cursor: pointer;
+}
+
+.clear-ingredients:hover {
+    background: #ead8e3;
+}
+
+
+/* 다도 안내 */
+
+#guidedGuide,
+#freeLab .dado-guide {
+    background: #fff0f4;
+    color: #987487;
+    border-radius: 17px;
+    padding: 15px;
+    margin: 20px 0;
+    line-height: 1.8;
+}
+
+
+/* 모바일 */
+
+@media (max-width: 600px) {
+
+    .lab-workspace {
+        grid-template-columns: 1fr;
+    }
+
+    .ingredient-shelf {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+}
+
+/* 약 제조 버튼 */
+
+.make-medicine {
+    display: block;
+    width: 100%;
+    max-width: 220px;
+    margin: 15px auto 10px;
+    padding: 14px;
+    border: none;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #d9b8e8, #b9c9ed);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.make-medicine:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 12px rgba(160, 130, 190, 0.2);
+}
+
+.make-medicine:disabled {
+    background: #e5e0e7;
+    color: #aaa;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* 모드 선택 화면 배치 */
+
+.experience-home-layout {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    gap: 25px;
+    max-width: 850px;
+    margin: 35px auto;
+}
+
+/* 레시피 북 버튼 */
+
+.recipe-book-button {
+    width: 210px;
+    min-height: 190px;
+    padding: 20px;
+    border: 2px solid #b9a17d;
+    border-radius: 8px 15px 15px 8px;
+    background: linear-gradient(135deg, #f5e8ca, #e7d2aa);
+    color: #65503a;
+    box-shadow: 4px 5px 0 #b9a17d, 7px 9px 15px rgba(0,0,0,0.12);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.recipe-book-button:hover {
+    transform: translateY(-5px) rotate(-2deg);
+    box-shadow: 6px 9px 0 #b9a17d, 9px 13px 18px rgba(0,0,0,0.15);
+}
+
+.recipe-book-icon {
+    font-size: 48px;
+}
+
+.recipe-book-title {
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.recipe-book-button small {
+    font-size: 12px;
+    color: #8a765e;
+}
+
+/* 모드 선택 영역 */
+
+.experience-mode-area {
+    flex: 1;
+    min-width: 0;
+}
+
+.experience-mode-area h2 {
+    margin-top: 0;
+}
+
+/* 레시피 북 팝업 배경 */
+
+.recipe-book-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: rgba(25, 28, 45, 0.65);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* 펼쳐진 책 */
+
+.recipe-book-window {
+    position: relative;
+    width: 100%;
+    max-width: 760px;
+    max-height: 85vh;
+    overflow-y: auto;
+    padding: 35px;
+    border: 3px solid #9b805d;
+    border-radius: 12px;
+    background: #f7edda;
+    color: #594832;
+    box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+    background-image:
+        linear-gradient(
+            90deg,
+            rgba(160, 125, 80, 0.08) 49.8%,
+            rgba(130, 100, 65, 0.18) 50%,
+            rgba(160, 125, 80, 0.08) 50.2%
+        );
+}
+
+.recipe-book-window h2 {
+    text-align: center;
+    font-family: Georgia, serif;
+    font-size: 28px;
+    margin: 5px 0 10px;
+}
+
+.recipe-book-window > p {
+    text-align: center;
+    color: #927c60;
+    font-size: 13px;
+    margin-bottom: 25px;
+}
+
+/* 닫기 버튼 */
+
+.recipe-book-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 7px 14px;
+    border: 1px solid #b9a17d;
+    border-radius: 5px;
+    background: #fff9ed;
+    color: #705b40;
+    cursor: pointer;
+}
+
+/* 약 목록 */
+
+.recipe-book-content {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px;
+    padding: 10px 0;
+}
+
+/* 약 카드 */
+
+.recipe-book-card {
+    min-height: 125px;
+    padding: 15px;
+    border: 1px solid #d5c19e;
+    border-radius: 8px;
+    background: rgba(255, 252, 242, 0.85);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    box-shadow: 2px 3px 5px rgba(90, 65, 35, 0.08);
+}
+
+.recipe-book-picture {
+    width: 65px;
+    min-width: 65px;
+    height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background: #eee1c8;
+    font-size: 30px;
+}
+
+.recipe-book-info {
+    min-width: 0;
+}
+
+.recipe-book-info h3 {
+    margin: 0 0 8px;
+    font-size: 15px;
+    color: #604a32;
+}
+
+.recipe-book-info p {
+    margin: 0;
+    font-size: 12px;
+    line-height: 1.6;
+    color: #8a765e;
+}
+
+/* 모바일 */
+
+@media (max-width: 600px) {
+
+    .experience-home-layout {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .recipe-book-button {
+        width: 100%;
+        min-height: 110px;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .recipe-book-icon {
+        font-size: 35px;
+    }
+
+    .experience-mode-area {
+        width: 100%;
+    }
+
+    .recipe-book-window {
+        padding: 30px 18px;
+    }
+
+    .recipe-book-content {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+/* 다시 만들기 버튼 */
+
+.remake-medicine {
+    display: block;
+    width: 100%;
+    max-width: 220px;
+    margin: 15px auto 10px;
+    padding: 14px;
+
+    border: none;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #b9d9d8, #b9c9ed);
+
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.remake-medicine:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 12px rgba(130, 170, 190, 0.2);
+}
+
+
+/* 레시피 북 약병 그림 */
+
+.recipe-book-picture {
+    width: 90px;
+    height: 105px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+/* 유리병 */
+
+.recipe-bottle {
+    width: 48px;
+    height: 65px;
+    position: relative;
+    margin-top: 12px;
+
+    border: 2px solid rgba(180, 190, 210, 0.9);
+    border-radius: 10px 10px 14px 14px;
+
+    background: linear-gradient(
+        110deg,
+        rgba(255,255,255,0.9),
+        rgba(220,235,255,0.35),
+        rgba(255,255,255,0.7)
+    );
+
+    box-shadow:
+        inset 4px 0 5px rgba(255,255,255,0.8),
+        0 4px 8px rgba(150,130,170,0.12);
+}
+
+/* 병뚜껑 */
+
+.recipe-bottle::before {
+    content: "";
+    position: absolute;
+    width: 23px;
+    height: 10px;
+    top: -12px;
+    left: 10px;
+
+    background: #d8c3e2;
+    border: 2px solid #c6b0d3;
+    border-radius: 4px 4px 2px 2px;
+}
+
+/* 병 속 약 */
+
+.recipe-bottle-liquid {
+    position: absolute;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+    height: 55%;
+
+    border-radius: 3px 3px 10px 10px;
+
+    background: linear-gradient(
+        135deg,
+        #e9a9cf,
+        #b8a6e8
+    );
+
+    opacity: 0.85;
+}
+
+/* 유리 반사광 */
+
+.recipe-bottle-shine {
+    position: absolute;
+    left: 6px;
+    top: 9px;
+    width: 5px;
+    height: 35px;
+
+    border-radius: 10px;
+    background: rgba(255,255,255,0.7);
+}
+
+/* 레시피 북 */
+
+.recipe-book-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(35, 29, 25, 0.65);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+
+.recipe-book-window {
+    position: relative;
+    width: 100%;
+    max-width: 750px;
+    max-height: 85vh;
+    overflow-y: auto;
+    padding: 40px 35px;
+    background:
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 31px,
+            rgba(170, 140, 100, 0.08) 32px
+        ),
+        #f4ead3;
+    border: 8px solid #79583e;
+    border-radius: 12px 22px 22px 12px;
+    box-shadow:
+        inset 8px 0 12px rgba(80, 50, 25, 0.16),
+        8px 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* 책 안쪽 장식 */
+
+.recipe-book-window::before {
+    content: "";
+    position: absolute;
+    left: 13px;
+    top: 0;
+    bottom: 0;
+    width: 8px;
+    background: rgba(110, 75, 45, 0.16);
+}
+
+.recipe-book-window h2 {
+    text-align: center;
+    color: #68472f;
+    font-family: Georgia, serif;
+    font-size: 27px;
+    margin: 0 0 10px;
+    letter-spacing: 1px;
+}
+
+.recipe-book-window > p {
+    text-align: center;
+    color: #927653;
+    font-size: 13px;
+    margin-bottom: 30px;
+}
+
+.recipe-book-close {
+    position: absolute;
+    top: 12px;
+    right: 17px;
+    border: none;
+    background: transparent;
+    color: #79583e;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.recipe-book-content {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    padding: 10px;
+}
+
+.recipe-book-empty {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 45px 10px;
+    color: #927653;
+}
+
+/* 약 기록 페이지 */
+
+.recipe-book-card {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    min-width: 0;
+    padding: 15px;
+    background: rgba(255, 252, 239, 0.8);
+    border: 1px solid #d6c3a1;
+    border-radius: 3px;
+    box-shadow: 2px 3px 5px rgba(90, 65, 35, 0.12);
+}
+
+.recipe-book-picture {
+    width: 65px;
+    height: 85px;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #eee2c9;
+    border: 1px solid #d4c09c;
+    border-radius: 3px;
+}
+
+/* 유리 약병 */
+
+.recipe-bottle {
+    position: relative;
+    width: 35px;
+    height: 52px;
+    margin-top: 8px;
+    border: 2px solid rgba(125, 110, 95, 0.7);
+    border-radius: 8px 8px 11px 11px;
+    background: rgba(255, 255, 255, 0.5);
+    overflow: visible;
+}
+
+.recipe-bottle::before {
+    content: "";
+    position: absolute;
+    width: 17px;
+    height: 9px;
+    top: -11px;
+    left: 7px;
+    background: #b99b70;
+    border: 2px solid #927653;
+    border-radius: 4px 4px 2px 2px;
+}
+
+.recipe-bottle-liquid {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 65%;
+    border-radius: 0 0 8px 8px;
+    background: linear-gradient(
+        135deg,
+        #dba2a0,
+        #a87991
+    );
+}
+
+.recipe-bottle-shine {
+    position: absolute;
+    top: 8px;
+    left: 5px;
+    width: 5px;
+    height: 25px;
+    border-radius: 5px;
+    background: rgba(255,255,255,0.8);
+}
+
+.recipe-book-info {
+    min-width: 0;
+    flex: 1;
+}
+
+.recipe-book-info h3 {
+    margin: 0 0 7px;
+    color: #68472f;
+    font-family: Georgia, serif;
+    font-size: 15px;
+    overflow-wrap: anywhere;
+}
+
+.recipe-book-info p {
+    margin: 0;
+    color: #927653;
+    font-size: 12px;
+    line-height: 1.5;
+
+    /* 설명은 한 줄만 표시 */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* 약 이름 입력창 */
+
+.custom-name-area {
+    margin: 20px auto;
+    max-width: 420px;
+    padding: 18px;
+    background: #fff9ed;
+    border: 1px solid #e5d4b8;
+    border-radius: 15px;
+}
+
+.custom-name-area p {
+    color: #80664e;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.custom-medicine-name {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 13px 16px;
+    border: 2px solid #d8c5a8;
+    border-radius: 12px;
+    background: #fffdf8;
+    color: #69533e;
+    font-size: 15px;
+    outline: none;
+    transition: 0.2s;
+}
+
+.custom-medicine-name::placeholder {
+    color: #b9a993;
+}
+
+.custom-medicine-name:focus {
+    border-color: #aa8a67;
+    box-shadow: 0 0 0 4px rgba(170, 138, 103, 0.13);
+}
+
+/* 모바일 */
+
+@media (max-width: 500px) {
+
+    .recipe-book-window {
+        padding: 35px 18px;
+        border-width: 6px;
+    }
+
+    .recipe-book-content {
+        grid-template-columns: 1fr;
+        padding: 5px;
+    }
+
+}
+
+/* 책장 넘기기 */
+
+.recipe-book-navigation {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px;
+    min-height: 45px;
+    color: #927653;
+    font-family: Georgia, serif;
+    font-size: 13px;
+}
+
+.recipe-book-navigation button {
+    position: absolute;
+    bottom: 0;
+    width: 42px;
+    height: 35px;
+    border: none;
+    background: #d9c4a2;
+    color: #68472f;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.recipe-book-navigation button:hover {
+    background: #c6a982;
+    transform: translateY(-3px);
+}
+
+.recipe-page-next {
+    right: -20px;
+    border-radius: 0 12px 0 0;
+}
+
+.recipe-page-prev {
+    left: -20px;
+    border-radius: 12px 0 0 0;
+}
+
+.recipe-book-navigation button:disabled {
+    opacity: 0.25;
+    cursor: default;
+    transform: none;
+}
+
+/* 약 상세 페이지 */
+
+.recipe-detail {
+    grid-column: 1 / -1;
+    position: relative;
+    padding: 20px 25px;
+    color: #68472f;
+    background: rgba(255, 252, 239, 0.75);
+    border: 1px solid #d6c3a1;
+    border-radius: 5px;
+    animation: recipePageAppear 0.3s ease;
+}
+
+@keyframes recipePageAppear {
+    from {
+        opacity: 0;
+        transform: translateX(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.recipe-detail-back {
+    border: none;
+    background: transparent;
+    color: #927653;
+    cursor: pointer;
+    font-size: 13px;
+    padding: 5px 0;
+}
+
+.recipe-detail-bottle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 110px;
+    margin: 10px 0;
+}
+
+.recipe-detail-bottle .recipe-bottle {
+    transform: scale(1.5);
+}
+
+.recipe-detail h2 {
+    text-align: center;
+    color: #68472f;
+    margin: 10px 0 25px;
+}
+
+.recipe-detail-section {
+    margin: 18px 0;
+    padding: 15px;
+    border-top: 1px solid #d6c3a1;
+}
+
+.recipe-detail-section h3 {
+    margin: 0 0 12px;
+    font-size: 15px;
+    color: #927653;
+}
+
+.recipe-detail-section p {
+    margin: 0;
+    line-height: 1.8;
+    color: #705940;
+    white-space: pre-line;
+    overflow-wrap: anywhere;
+}
+
+.recipe-detail-ingredients {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+}
+
+.recipe-detail-ingredients span {
+    padding: 8px 12px;
+    border-radius: 20px;
+    background: #eee2c9;
+    color: #79583e;
+    font-size: 13px;
+}
+
+.recipe-detail-footer {
+    text-align: right;
+    color: #ad9879;
+    font-size: 11px;
+    margin-top: 20px;
+}
+
+@media (max-width: 500px) {
+    .recipe-detail {
+        padding: 15px;
+    }
+}
+
+/* =========================
+   DADO ABOUT PAGE
+========================= */
+
+.about-description {
+    max-width: 780px;
+    margin: 35px auto;
+    padding: 35px;
+    background: #fffdf5;
+    border: 2px solid #e5d9bd;
+    border-radius: 18px;
+    box-shadow: 0 7px 20px rgba(100, 80, 50, 0.08);
+    color: #625747;
+    line-height: 1.9;
+    position: relative;
+}
+
+/* 상단 소개 장식 */
+
+.about-description::before {
+    content: "official dado info";
+    display: block;
+    text-align: center;
+    font-family: Georgia, serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #a18cbb;
+    border-bottom: 1px dashed #d9c9ae;
+    padding-bottom: 18px;
+    margin-bottom: 25px;
+}
+
+/* 소개 문단 */
+
+.about-description > p {
+    padding: 15px 18px;
+    margin: 15px 0;
+    background: #faf6ed;
+    border-left: 4px solid #c8b6df;
+    border-radius: 5px 12px 12px 5px;
+    font-size: 14px;
+}
+
+/* 햄스터 키보드 문단 */
+
+.about-description > p:nth-of-type(2) {
+    background: #f4f3e7;
+    border-left-color: #b9c78e;
+    overflow-wrap: anywhere;
+}
+
+/* 시프트 고장 문단 */
+
+.about-description > p:nth-of-type(3) {
+    background: #f7f0f5;
+    border-left-color: #d5a9c5;
+}
+
+/* 규칙 안내 문단 */
+
+.about-description > p:nth-of-type(4) {
+    background: #eeeafa;
+    border: 1px dashed #b9a8d3;
+    border-left: 4px solid #a99acb;
+    font-weight: bold;
+    color: #71618c;
+}
+
+/* 다도의 중요한 규칙 */
+
+.about-description ol {
+    counter-reset: dado-rule;
+    list-style: none;
+    padding: 0;
+    margin: 25px 0 0;
+}
+
+.about-description li {
+    counter-increment: dado-rule;
+    position: relative;
+    padding: 15px 15px 15px 55px;
+    margin: 10px 0;
+    background: #fffaf0;
+    border: 1px solid #e8dcc5;
+    border-radius: 10px;
+    font-size: 13px;
+    color: #6e604e;
+    transition: 0.2s;
+}
+
+.about-description li::before {
+    content: counter(dado-rule, decimal-leading-zero);
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 27px;
+    height: 27px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #e9e0f4;
+    border-radius: 50%;
+    color: #81719f;
+    font-family: Georgia, serif;
+    font-size: 11px;
+}
+
+.about-description li:hover {
+    transform: translateX(4px);
+    background: #f8f2ff;
+    border-color: #c9b8df;
+}
+
+/* 마지막 규칙 */
+
+.about-description li:last-child {
+    background: #f1f3e7;
+    border-style: dashed;
+    border-color: #c2cba5;
+}
+
+.about-description li:last-child::before {
+    background: #dce5c5;
+    color: #74835b;
+}
+
+/* 모바일 */
+
+@media (max-width: 600px) {
+
+    .about-description {
+        padding: 22px 15px;
+        margin: 20px auto;
+    }
+
+    .about-description > p {
+        padding: 13px;
+        font-size: 13px;
+    }
+
+    .about-description li {
+        padding: 13px 12px 13px 48px;
+        font-size: 12px;
+    }
+
+}
+
+/* CUSTOMER CHAT */
+
+.customer-chat {
+    max-width: 650px;
+    margin: 30px auto;
+    background: #fffdf7;
+    border: 2px solid #e6d9c5;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(90, 70, 50, 0.09);
+}
+
+.customer-chat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 22px;
+    background: #eee9f7;
+    border-bottom: 1px solid #ddd2ed;
+}
+
+.customer-chat-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.customer-chat-avatar {
+    width: 43px;
+    height: 43px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 13px;
+    background: #c7b7e2;
+    color: white;
+    font-family: Georgia, serif;
+    font-size: 25px;
+}
+
+.customer-chat-header h2 {
+    margin: 0;
+    color: #71618d;
+    font-size: 17px;
+}
+
+.customer-chat-header span {
+    color: #9a8cad;
+    font-size: 11px;
+}
+
+.chat-online-dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    margin-right: 4px;
+    background: #8dbb8b;
+    border-radius: 50%;
+}
+
+.customer-chat-label {
+    color: #a292ba;
+    font-family: Georgia, serif;
+    font-size: 10px;
+    letter-spacing: 1px;
+}
+
+.customer-chat-intro {
+    padding: 22px;
+    text-align: center;
+    background: #faf6ec;
+    border-bottom: 1px dashed #e4d8c5;
+}
+
+.customer-chat-intro h3 {
+    color: #a17eae;
+    font-size: 19px;
+}
+
+.customer-chat-intro p {
+    color: #827665;
+    font-size: 13px;
+    line-height: 1.9;
+}
+
+.customer-chat-intro strong {
+    display: block;
+    margin-top: 12px;
+    color: #a17eae;
+    font-size: 13px;
+}
+
+.customer-chat-messages {
+    height: 350px;
+    overflow-y: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background: #fffdf8;
+}
+
+.chat-message {
+    max-width: 82%;
+    padding: 12px 15px;
+    border-radius: 13px;
+    font-size: 13px;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+}
+
+.dado-message {
+    align-self: flex-start;
+    background: #eee9f7;
+    color: #665778;
+    border-bottom-left-radius: 3px;
+}
+
+.user-message {
+    align-self: flex-end;
+    background: #f4eddb;
+    color: #766344;
+    border-bottom-right-radius: 3px;
+}
+
+.chat-sender {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 10px;
+    font-weight: bold;
+    opacity: 0.65;
+}
+
+.customer-chat-input-area {
+    display: flex;
+    gap: 8px;
+    padding: 14px;
+    border-top: 1px solid #eee5d8;
+    background: #faf7f0;
+}
+
+.customer-chat-input-area input {
+    flex: 1;
+    min-width: 0;
+    padding: 12px 14px;
+    border: 1px solid #ded3c4;
+    border-radius: 10px;
+    outline: none;
+    background: white;
+    color: #665778;
+    font-size: 13px;
+}
+
+.customer-chat-input-area input:focus {
+    border-color: #b8a5d5;
+    box-shadow: 0 0 0 3px rgba(184, 165, 213, 0.15);
+}
+
+.customer-chat-input-area button {
+    padding: 0 19px;
+    border: none;
+    border-radius: 10px;
+    background: #b8a5d5;
+    color: white;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.customer-chat-input-area button:hover {
+    background: #9e89c0;
+}
+
+.customer-chat-bottom {
+    padding: 10px;
+    text-align: center;
+    background: #f1ebf7;
+    color: #a395b5;
+    font-family: Georgia, serif;
+    font-size: 10px;
+    letter-spacing: 1px;
+}
+
+@media (max-width: 500px) {
+    .customer-chat {
+        margin: 20px auto;
+    }
+
+    .customer-chat-messages {
+        height: 320px;
+        padding: 14px;
+    }
+
+    .customer-chat-label {
+        display: none;
+    }
+}
+
+
+.chat-typing {
+    color: #a292ba;
+    font-style: italic;
+    opacity: 0.7;
+    animation: dadoTyping 0.8s infinite alternate;
+}
+
+@keyframes dadoTyping {
+    from { opacity: 0.35; }
+    to { opacity: 1; }
+}
+
+
+/* 채팅 메시지 시간 */
+
+.chat-message-time {
+    display: block;
+    margin-top: 6px;
+    font-size: 9px;
+    opacity: 0.55;
+    text-align: right;
+}
+
+.chat-message {
+    position: relative;
+    width: fit-content;
+    min-width: 90px;
+}
+
+.user-message .chat-message-time {
+    color: #8b795d;
+}
+
+.dado-message .chat-message-time {
+    color: #817292;
+}
+
+
+/* 다도 기본 프로필 아바타 */
+
+.dado-message {
+    position: relative;
+    margin-left: 42px;
+}
+
+.dado-message::before {
+    content: "";
+    position: absolute;
+    left: -42px;
+    bottom: 0;
+
+    width: 32px;
+    height: 32px;
+
+    border-radius: 50%;
+    background-color: #e3e3e3;
+
+    background-image:
+        radial-gradient(
+            circle at 50% 35%,
+            #777777 0 19%,
+            transparent 20%
+        ),
+        radial-gradient(
+            ellipse at 50% 105%,
+            #777777 0 38%,
+            transparent 39%
+        );
+
+    background-repeat: no-repeat;
+}
+
+
+/* 배송 완료 도장 */
+
+.delivery-stamp {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    width: 112px;
+    height: 112px;
+    margin: 22px auto 8px;
+    border: 3px double #c77d91;
+    border-radius: 50%;
+    background: transparent;
+    color: #b66e86;
+    transform: rotate(-9deg);
+    cursor: pointer;
+    transition: transform 0.25s ease;
+}
+
+.delivery-stamp:hover {
+    transform: rotate(0deg) scale(1.06);
+}
+
+.delivery-stamp span {
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.delivery-stamp strong {
+    font-size: 17px;
+}
+
+.delivery-stamp small {
+    font-size: 8px;
+    letter-spacing: 1px;
+}
+
+.delivery-stamp-message {
+    text-align: center;
+    color: #b77d91;
+    font-size: 12px;
+    margin: 8px 0 4px;
+    animation: stampAppear 0.3s ease;
+}
+
+@keyframes stampAppear {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.delivery-reply {
+    white-space: pre-line;
+    display: block;
+}
+
+
+/* guest book */
+
+#guestbookList {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 30px;
+}
+
+.guestbook-card {
+    background: #fffafb;
+    border: 1px solid #f0dce3;
+    border-radius: 15px;
+    padding: 20px 23px;
+    box-shadow: 0 3px 10px rgba(180, 130, 145, 0.07);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.guestbook-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(180, 130, 145, 0.13);
+}
+
+.guestbook-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 9px;
+}
+
+.guestbook-top strong {
+    color: #856773;
+    font-size: 14px;
+}
+
+.guestbook-top span {
+    color: #b9a4ab;
+    font-size: 11px;
+}
+
+.guestbook-stars {
+    color: #e9b86e;
+    font-size: 15px;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.guestbook-card p {
+    color: #77636a;
+    font-size: 14px;
+    line-height: 1.8;
+    margin: 0 0 13px;
+}
+
+.guestbook-product {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 12px;
+    padding: 6px 11px;
+    border-radius: 6px;
+    background: #fff4e8;
+    border: 1px solid #f0dfcf;
+    color: #a17c68;
+    font-size: 12px;
+    letter-spacing: 0.2px;
+}
+
+.guestbook-product::before {
+    content: "✦";
+    color: #d5a77f;
+    font-size: 11px;
+}
+
+@media (max-width: 600px) {
+    .guestbook-card {
+        padding: 16px;
+    }
+
+    .guestbook-top strong {
+        font-size: 13px;
+    }
+}
+
+/* 후기 작성창 */
+
+#reviewContent {
+    display: block;
+    width: 100%;
+    min-height: 125px;
+    resize: vertical;
+
+    padding: 17px 19px;
+    margin: 12px 0 14px;
+
+    background: #fffdfb;
+    border: 1px solid #ead9d9;
+    border-radius: 13px;
+
+    color: #66565b;
+    font-family: inherit;
+    font-size: 13px;
+    line-height: 1.8;
+
+    outline: none;
+    transition: border 0.2s, box-shadow 0.2s;
+}
+
+#reviewContent::placeholder {
+    color: #c5adb4;
+}
+
+#reviewContent:focus {
+    border-color: #d9a9b8;
+    box-shadow: 0 0 0 4px rgba(217, 169, 184, 0.13);
+}
+
+/* 별점 선택 */
+
+#reviewRating {
+    padding: 10px 14px;
+    border: 1px solid #ead9d9;
+    border-radius: 10px;
+
+    background: #fffdfb;
+    color: #a47b88;
+
+    font-family: inherit;
+    font-size: 13px;
+    outline: none;
+    cursor: pointer;
+}
+
+/* 후기 등록 버튼 */
+
+#reviewContent + button,
+#reviewRating + button {
+    border: none;
+    border-radius: 10px;
+    padding: 12px 22px;
+
+    background: #e9c6cf;
+    color: #795866;
+
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: bold;
+
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#reviewContent + button:hover,
+#reviewRating + button:hover {
+    background: #dcaebb;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(180, 130, 145, 0.15);
+}
+
+#reviewProduct {
+    width: 100%;
+    padding: 12px 14px;
+    margin-bottom: 15px;
+    border: 1px solid #e8d9d0;
+    border-radius: 9px;
+    background: #fffdf9;
+    color: #665750;
+    font-size: 13px;
+    font-family: inherit;
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#reviewProduct:focus {
+    border-color: #d4a995;
+    box-shadow: 0 0 0 3px rgba(212, 169, 149, 0.15);
+}
+
+#reviewProduct option {
+    background: #fffdf9;
+    color: #665750;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-inner">
+        <div>
+            <div class="logo">dado's <span>♡</span> pharmacy</div>
+            <div class="header-info">
+                a little pharmacy for everyone
+            </div>
+        </div>
+
+        <div class="header-info">
+            hallo customer ☺
+        </div>
+    </div>
+
+    <nav>
+        <button onclick="showPage('home')">home</button>
+        <button onclick="showPage('about')">about</button>
+        <button onclick="showPage('shop')">pharmacy</button>
+        <button onclick="showPage('experience')">ecperience</button>
+        <button onclick="showPage('mypage')">ma page</button>
+        <button onclick="showPage('order')">order</button>
+        <button onclick="showPage('guestbook')">guest book</button>
+    </nav>
+</header>
+
+<main>
+
+    <section id="home" class="page active">
+
+        <div class="hero">
+            <div class="hero-label">
+                ♡ welcom to dados pharmacy ♡
+            </div>
+
+            <h1>hello, dear customer!</h1>
+
+            <p>
+                안녕 친구 다도 온라인 약국 열엇어요<br>
+                친구가 필요한 것 모두 만들어요 
+            </p>
+
+            <p>
+                dado have everything for u! ♡
+            </p>
+
+            <button class="main-button"
+                    onclick="showPage('shop')">
+                상품 구경 →
+            </button>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">
+                what do u need today?
+            </h2>
+
+            <p class="section-desc">
+                어던 도움 필요? 
+                다도 친절하게 도와줘요
+            </p>
+
+            <div class="menu-grid">
+
+                <div class="menu-card pink"
+                     onclick="showPage('shop')">
+                    <h3>💊 pharmacy </h3>
+                    <p>다도 특별한 상품</p>
+                </div>
+
+                <div class="menu-card yellow"
+                     onclick="showPage('experience')">
+                    <h3>🧪 ecperience </h3>
+                    <p>재미잇는 체험</p>
+                </div>
+
+                <div class="menu-card blue"
+                     onclick="showPage('about')">
+                    <h3>🌷 about mi </h3>
+                    <p>다도에 대해 알려줘요</p>
+                </div>
+
+                <div class="menu-card green"
+                     onclick="showPage('mypage')">
+                    <h3>👤 ma page </h3>
+                    <p> 친구 계정 확인해요 </p>
+                </div>
+
+                <div class="menu-card purple"
+                     onclick="showPage('order')">
+                    <h3>📦 order </h3>
+                    <p>주문한 약 확인해요 </p>
+                </div>
+
+                <div class="menu-card pink"
+                     onclick="showPage('customer')">
+                    <h3>💌 customer <3 </h3>
+                    <p>궁금한 점?</p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">
+                ★ a lil message from dear dado
+            </h2>
+
+            <div class="menu-card yellow">
+                <p>
+                    안녕 안녕 다도는 매우 행복해요
+                    친구를 볼 수 잇어요
+                </p>
+                <p>
+                    재밌게 즐겨줘요 
+                    도 찾아줘요 다도 기다릴게요 
+                </p>
+            </div>
+        </div>
+
+    </section>
+
+    <section id="about" class="page">
+        <div class="about-description">
+
+    <p>
+        안녕 그래 너 멋진 다도 약국 사이트 찾아왓어요. 다도 집 약국이자 발래방이자 태닝샵이에요. 다도 집 동네 오게 되면 다도의 단기대출이랑 비디오 렌탈샵도 들러주어요.
+    </p>
+
+    <p>
+        그래 나 다도(dado) 멋진 다도 사업 공급업자에요. 맞춤법 틀려서 미안해요 햄스터 자주 키보드 걸어다녀서 ㅣㅏㅁ히ㅏㅓㅁ; 닐머ㅏㄴㅇ려ㅏ 햄ㅅ터
+    </p>
+
+    <p>
+        오 너 소중한 치료법 목로기 보고 싶어요? 네 나 이거 보여주어요. 다도 너 아픔 고쳐줄 물건 잇어요. 오타 도 미안해요, 다도 시프트 고장낫어요.
+    </p>
+
+    <p>
+        다도 좋은 약 주문하고 싶어요? 음 좋아요 멋진 치료법 줄게요. 다음 중요한 규칙 기억해요.
+    </p>
+
+    <ol>
+        <li>다도 좋은 약 아주 잘 만들어요</li>
+        <li>다도 가금 사람들 말할 대 무슨 소린지 헷갈려요</li>
+        <li>너 다도 믿어요</li>
+        <li>다도 아마존 프라임 잇어서 운송비 안내요</li>
+        <li>다도 멋진 자본주의자에요, 자랑스런 세탁소 태닝방 잇어요</li>
+        <li>다도 시프트 고장나서 다도 dado에요</li>
+        <li>다도 맞춤법 지켜요, 다도 그저 다도 아니면 중요한 비즈니스 파트너 로버트 미첼 아닌 이름 가금 헷갈려요</li>
+        <li>흐음 아무 규칙 좋아요 하지만 말해서 재밋는 규칙 나중에 생각나면 말해요.</li>
+    </ol>
+
+</div>
+    </section>
+
+    
+<section id="shop" class="page">
+    <div class="page-content">
+
+        <h1>💊 dado pharmacy</h1>
+
+        <p>다도 특별한 상품 잇어요 구경해요</p>
+
+        <!-- 일반 상품 -->
+        <h2>💊 일반 상품</h2>
+
+        <div id="productGrid" class="product-grid"></div>
+
+        <div id="productPagination" class="product-pagination"></div>
+
+
+        <!-- 특별 상품 -->
+        <hr>
+
+        <h2>💊 특별 상품</h2>
+
+        <p>다도가 특별하게 준비햇어요 조금 주의 필요해요</p>
+
+        <div id="specialProductGrid" class="product-grid special-product-grid"></div>
+
+
+        <p class="shop-notice">
+            all products are made with love by dado ♡
+        </p>
+
+        <div class="contact-banner">
+
+            <h3> 찾는 약 없어요? </h3>
+
+            <p>
+                괜찮아요! 다도는 많은 약 만들어요.<br>
+                원하는 약 무엇? 다도에게 연락해요!
+            </p>
+
+            <button onclick="showPage('customer')">
+                다도 연락 기다려요 <3
+            </button>
+
+        </div>
+
+    </div>
+</section>
+
+
+
+<section id="experience" class="page">
+    <div class="page-content">
+
+        <h1>🧪 dado's medicine lab</h1>
+        <p>다도 함게 세상 하나분인 약 만들어요 </p>
+
+        <!-- 모드 선택 화면 -->
+<div id="experienceHome" class="experience-home">
+
+    <div class="experience-home-layout">
+
+        <!-- 레시피 북 버튼 -->
+        <button class="recipe-book-button" onclick="openRecipeBook()">
+            <span class="recipe-book-icon">📖</span>
+            <span class="recipe-book-title">다도의 레시피 북</span>
+            <small>만든 약을 모아 봐요</small>
+        </button>
+
+        <!-- 모드 선택 -->
+        <div class="experience-mode-area">
+
+            <h2>어던 방식으로 만들까요?</h2>
+
+            <div class="experience-mode">
+
+                <button onclick="openExperienceMode('guided')">
+                    📖 다도 모드
+                    <small>다도 친절해요 만드는 방법 알려 줘요</small>
+                </button>
+
+                <button onclick="openExperienceMode('free')">
+                    🧪 자유 모드
+                    <small>원하는 대로 만들어 봐요</small>
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+        <!-- 레시피 모드 화면 -->
+        <div id="guidedLab" class="experience-lab" style="display:none;">
+
+            <button onclick="backToExperienceHome()">← 모드 선택으로</button>
+
+            <h2>📖 다도의 레시피 </h2>
+
+            <div id="guidedGuide" class="dado-guide">
+                다도 레시피를 알려 줘요
+            </div>
+
+            <div id="guidedLabContent">
+                <!-- 다음 단계에서 제조실을 만들 거예요 -->
+            </div>
+
+        </div>
+
+
+        <!-- 레시피 북 팝업 -->
+        <div id="recipeBookModal" class="recipe-book-modal"
+             style="display:none;">
+
+            <div class="recipe-book-window">
+
+                <button class="recipe-book-close"
+                        onclick="closeRecipeBook()">×</button>
+
+                <h2>📖 다도의 레시피 북</h2>
+                <p>다도 함게 만든 약 여기에 기록되요</p>
+
+                <div id="recipeBookContent" class="recipe-book-content">
+</div>
+
+<div class="recipe-book-navigation" id="recipeBookNavigation">
+
+    <button onclick="changeRecipeBookPage(-1)"
+            class="recipe-page-prev"
+            aria-label="이전 페이지">
+        ◀
+    </button>
+
+    <span id="recipeBookPageNumber">1 / 1</span>
+
+    <button onclick="changeRecipeBookPage(1)"
+            class="recipe-page-next"
+            aria-label="다음 페이지">
+        ▶
+    </button>
+
+</div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 자유 모드 화면 -->
+        <div id="freeLab" class="experience-lab" style="display:none;">
+
+            <button onclick="backToExperienceHome()">← 모드 선택으로</button>
+
+            <h2>🧪 자유 모드 </h2>
+
+            <div class="dado-guide">
+                마음대로 만들어 봐요 다도 결과 궁금해요
+            </div>
+
+            <div id="freeLabContent">
+                <!-- 다음 단계에서 제조실을 만들 거에요 -->
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+
+    <section id="mypage" class="page">
+    <div class="page-content">
+        <h1>👤 ma page</h1>
+        <p>다도 소중한 친구</p>
+
+        <div id="memberCreate">
+            <p>회원증 만들어요 이름 알려줘요</p>
+
+            <input
+                type="text"
+                id="memberNameInput"
+                placeholder="your name..."
+                maxlength="15"
+            >
+
+            <button class="main-button" onclick="createMembership()">
+                회원증 만들기
+            </button>
+        </div>
+
+        <div id="memberCard" class="member-card" style="display:none;">
+            <div class="member-card-top">
+                <span>dados</span>
+                <span>pharmacy</span>
+            </div>
+
+            <div class="member-card-title">행복한 고객 카드</div>
+
+            <div class="member-card-emoji">💝</div>
+
+            <div class="member-card-name" id="memberCardName"></div>
+
+            <div class="member-card-number" id="memberCardNumber"></div>
+
+            <div class="member-card-bottom">
+                <span>환영해요 나의 친구</span>
+                <span> <3 </span>
+            </div>
+        </div>
+
+        <div id="memberMessage"></div>
+    </div>
+</section>
+
+    <section id="order" class="page">
+    <div class="page-content">
+        <h1>📦 my order</h1>
+        <p>친구가 고른 상품이에요 다도 기버요</p>
+
+        <div id="cartItems"></div>
+
+        <div class="cart-total">
+            <span>total price</span>
+            <strong id="cartTotal">₩ 0</strong>
+        </div>
+
+        <button id="checkoutButton" class="main-button"
+            onclick="placeOrder()">
+            주문 <3
+        </button>
+
+        <div id="orderMessage"></div>
+
+        <hr>
+
+        <h2>order history</h2>
+        <p>지난 주문이에요</p>
+
+        <div id="orderHistory"></div>
+
+        <button class="main-button" onclick="showPage('shop')">
+            더 구경
+        </button>
+    </div>
+</section>
+
+    <section id="customer" class="page">
+    <div class="page-content">
+
+        <h1>💌 dado customer service</h1>
+        <p>원하는 약 잇어요? 다도에게 말해요</p>
+
+        <div class="customer-chat">
+
+            <div class="customer-chat-header">
+                <div class="customer-chat-profile">
+                    <div class="customer-chat-avatar">d</div>
+                    <div>
+                        <h2>안녕나는다도에요</h2>
+                        <span>
+                            <i class="chat-online-dot"></i>
+                            online
+                        </span>
+                    </div>
+                </div>
+                <div class="customer-chat-label">약국 사이트에요</div>
+            </div>
+
+            <div class="customer-chat-intro">
+                <h3> 찾는 약 없어요? </h3>
+                <p>
+                    괜찮아요. 다도는 많은 약 만들어요.<br>
+                    원하는 약 무엇? 다도에게 연락해요.
+                </p>
+             
+            </div>
+
+            <div id="customerChatMessages"
+                 class="customer-chat-messages">
+
+                <div class="chat-message dado-message">
+                    <span class="chat-sender">다도</span>
+                    안녕 무엇이 필요해요? 다도 원하는 약 만들어 줄 수 잇어요
+                </div>
+
+            </div>
+
+            <div class="customer-chat-input-area">
+
+                <input
+                    type="text"
+                    id="customerChatInput"
+                    placeholder="원하는 약 설명해 줘요"
+                    maxlength="300"
+                >
+
+                <button onclick="sendCustomerMessage()">
+                    send
+                </button>
+
+            </div>
+
+            <div class="customer-chat-bottom">
+                dado luv u
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<section id="guestbook" class="page">
+    <div class="page-content">
+
+        <h1>guest book</h1>
+        <p>다도 도움 받은 고객들 이야기에요</p>
+
+        <div class="guestbook-form">
+    <label for="reviewProduct">구매 상품</label>
+    <select id="reviewProduct">
+        <option value="">구매 상품을 선택해 주세요</option>
+    </select>
+
+    <label for="reviewRating">별점</label>
+    <select id="reviewRating">
+        <option value="5">★★★★★</option>
+        <option value="4">★★★★☆</option>
+        <option value="3">★★★☆☆</option>
+        <option value="2">★★☆☆☆</option>
+        <option value="1">★☆☆☆☆</option>
+    </select>
+
+    <label for="reviewContent">후기 내용</label>
+    <textarea
+        id="reviewContent"
+        maxlength="300"
+        placeholder="다도에게 하고 싶은 말을 적어 주세요"
+    ></textarea>
+
+    <button onclick="submitGuestReview()">
+        후기 남기기
+    </button>
+</div>
+
+<div id="guestbookList"></div>
+
+    </div>
+</section>
+
+<!-- 상품 상세 팝업 -->
+
+<div id="productModalOverlay" class="product-modal-overlay">
+
+    <div class="product-modal">
+
+        <button class="product-modal-close"
+                onclick="closeProduct()">
+            ×
+        </button>
+
+        <div id="modalPicture" class="product-modal-picture"></div>
+
+        <span id="modalTag" class="product-modal-tag"></span>
+
+        <h2 id="modalName"></h2>
+
+        <p id="modalDescription" class="product-modal-description"></p>
+
+<p id="modalWarning" class="product-modal-warning"></p>
+
+        <div id="modalPrice" class="product-modal-price"></div>
+
+        <p id="modalCartMessage" class="modal-cart-message"></p>
+
+<button id="modalCartButton"
+        class="product-modal-confirm"
+        onclick="addToCart()">
+    물건 담아요
+</button>
+
+    </div>
+
+</div>
+
+<!-- 주문 삭제 확인 팝업 -->
+<div id="deleteOrderModal" class="product-modal-overlay">
+    <div class="product-modal">
+        <div class="product-modal-picture">🧺</div>
+
+        <h2>really delete?</h2>
+
+        <p class="product-modal-description">
+            정말 이 내역 삭제해요?
+            <br>
+            삭제하면 다시 되돌릴 수 없어요
+        </p>
+
+        <div class="delete-order-buttons">
+            <button onclick="closeDeleteOrderModal()">
+                아니요
+            </button>
+
+            <button onclick="confirmDeleteOrder()">
+                네, 삭제해요
+            </button>
+        </div>
+    </div>
+</div>
+
+</main>
+
+<footer>
+    <strong>dado's happy pharmacy ♡</strong><br>
+    thank u for visiting dado's pharmacy<br>
+    dado is always happy to help u.<br>
+    © 본 저작물은 poI-1313 "다도" 및 관련 SCP, SCP-KO 문서를 기반으로 하며, CC BY-SA 3.0 라이선스를 따릅니다. 수익 창출을 하지 않는 사이트입니다.
+</footer>
+
+<script>
+
+/* 기존 페이지 이동 기능 */
+
+function showPage(pageId) {
+
+    const pages = document.querySelectorAll('.page');
+
+    pages.forEach(page => {
+        page.classList.remove('active');
+    });
+
+    const target = document.getElementById(pageId);
+
+    if (target) {
+        target.classList.add('active');
+    }
+
+    if (pageId === "order") {
+    renderCart();
+    renderOrderHistory();
+
+    document.getElementById("orderMessage").textContent = "";
+}
+
+if (pageId === "mypage") {
+    renderMembership();
+}
+
+    window.scrollTo(0, 0);
+}
+
+/* 상품 목록 */
+/* 새로운 약을 추가하고 싶으면 이 목록에 넣으면 돼! */
+
+const products = [
+
+    {
+        name: "joy ride",
+        korean: "기븜을 타고",
+        emoji: "😊",
+        tag: "bast seller <3",
+        description: "기버지는 약이에요.\n웃으면 더 기버요 :)",
+        price: 3000
+    },
+
+    {
+        name: "sleepy sleepy",
+        korean: "쿨쿨 쿨쿨",
+        emoji: "🌌",
+        tag: "sweet dream",
+        description: "잠이 오지 않아요?\n이제 걱정하지 않아도 되요",
+        price: 5000
+    },
+
+    {
+        name: "forget me",
+        korean: "잊어요",
+        emoji: "😶‍🌫️",
+        tag: "special item",
+        description: "잊고 싶은 것이 잇어요?\n무엇이엇는지 기억나지 않게 되요.",
+        price: 7000
+    },
+
+    {
+        name: "friend maker",
+        korean: "친구 만들어요",
+        emoji: "🤝",
+        tag: "dado recommend",
+        description: "새 친구 만들어요.\n친구 언제나 많을수록 좋아요",
+        price: 4500
+    },
+
+    {
+        name: "nostalgia",
+        korean: "노스탤지어?아?",
+        emoji: "🏠",
+        tag: "home is sweet",
+        description: "좋은 굼 궈요.\n잃어버린 기억을 만나요",
+        price: 4000
+    },
+
+    {
+        name: "ghosting",
+        korean: "유령 되기",
+        emoji: "🫥",
+        tag: "can be invisible",
+        description: "먹고 숨 참아봐요.\n투명해질 수 잇어요.",
+        price: 6500
+    },
+
+    {
+        name: "time stepper",
+        korean: "잠간만 뒤로",
+        emoji: "⏳",
+        tag: "regret prevention",
+        description: "아차, 실수하셧어요?\n5분 전으로 시간을 되돌려요.",
+        price: 8500
+    },
+
+    {
+        name: "heart warmer",
+        korean: "말랑말랑 마음",
+        emoji: "💖",
+        tag: "emergency cure",
+        description: "마음이 닥닥하게 굳엇을 대\n단 한 알로 다시 말랑해요.",
+        price: 3500
+    },
+
+    {
+        name: "unlucky shield",
+        korean: "우산 챙겻어?",
+        emoji: "🍀",
+        tag: "daily essential",
+        description: "오늘다라 불운이 겹치나요\n작은 행운의 보호막 싀워줄게요.",
+        price: 5500
+    },
+
+    {
+        name: "dream catcher",
+        korean: "굼 빌려줘요",
+        emoji: "🔮",
+        tag: "limited edition",
+        description: "오늘 밤 특별한 모험\n하고 싶은 고객 위한 특별 상품이에요.",
+        price: 9000
+    },
+
+    {
+        name: "cloud walker",
+        korean: "구름 사분",
+        emoji: "☁️",
+        tag: "heavy day pick",
+        description: "몸 마음 무거운 날에\n구름 위 걷듯 가벼워져요.",
+        price: 5000
+    },
+
+    {
+        name: "word filter",
+        korean: "필터링 긑",
+        emoji: "🤫",
+        tag: "peace keeping",
+        description: "상처 말 다 배고\n듣고 싶은 에븐 말로만 들려요.",
+        price: 6000
+    }
+
+];
+
+const specialProducts = [
+
+    {
+        name: "신중한 바나나 방사전 죽이는 알약",
+        emoji: "🍌",
+        tag: "판매 중지",
+        description: "네 이 약 별로 약 아니에요\n왜냐면 이 알약 바나나 만들고 너 죽여요.\n살아 있는 질병 치료 효과 너무 좋아요.",
+        warning: "현재 판매 중지된 상품이에요 미안해요",
+        price: 9999999,
+        status: "판매 중지"
+    },
+
+    {
+        name: "졸리면 낮잠 자는 알약",
+        emoji: "🛌",
+        tag: "주의",
+        description: "다도 낮잠 많이 좋아해요\n그래서 사람들이 '좋은 낮잠 알약 주어요' 말해서\n다도 말햇어요 '벌서 만들엇어요 네'.\n이 좋은 약 쿨 개수 늘려주어요.",
+        warning: "복용 후 의식과 신체 활동이 극도로 느려질 수 잇어요. 가벼운 수면을 위한 약이 아니에요.",
+        price: 12000,
+        status: "주의"
+    },
+
+    {
+        name: "토기 성장약",
+        emoji: "🐇",
+        tag: "주의",
+        description: "작은 여자아이 토기 잃어서 다도 좋은 서비스로 많은 토기 만들어 줫어요.\n네가 아이고 토기 없을 대만 서요.",
+        warning: "너 크고 토기 잇으면 오 이런 미안해요",
+        price: 8000,
+        status: "주의"
+    },
+
+    {
+        name: "머릿속에 잇어야겟 어 약",
+        emoji: "🤔",
+        tag: "주의",
+        description: "중요한 기억 지켜 주는 약이에요\n잊으면 안 되는 거 다도 지켜 줘요",
+        warning: "중요하지 않은 기억 사라질 수 잇어요",
+        price: 15000,
+        status: "주의"
+    },
+
+    {
+        name: "다도의 pvp 물약",
+        emoji: "⚔️",
+        tag: "특별",
+        description: "pvp 잘해지고 싶어요?\n그런 당신 위한 굉장한 다도 상품 잇어요.\n오토마우스보다 좋은 다도 pvp 물약 잇어요.",
+        warning: "완전 합법이에요 밴 안 당해요.\n다도 기술 대단해서 소프트웨어 변조 없이 만들 수 잇어요.",
+        price: 27104,
+        status: "특별"
+    },
+
+    {
+        name: "다도의 킬아우라 물약",
+        emoji: "✨",
+        tag: "판매 중지",
+        description: "멀티플레이어 게임에서 바르게 이기고 싶어요?\n다도 도와줄 수 잇어요\n킬아우라 만들어 줘요",
+        warning: "현재 판매는 안 하고 잇어요",
+        price: 25565,
+        status: "판매 중지"
+    }
+
+];
+
+/* 다도 제조실 재료 */
+
+const labIngredients = [
+    { name: "달기", emoji: "🍓" },
+    { name: "별가루", emoji: "⭐" },
+    { name: "민들레", emoji: "🌼" },
+    { name: "달빛", emoji: "🌙" },
+    { name: "솜사탕", emoji: "🍬" },
+    { name: "비눗방울", emoji: "🫧" },
+    { name: "깃털", emoji: "🪶" },
+    { name: "굴", emoji: "🍯" },
+    { name: "거울 조각", emoji: "🪞" },
+    { name: "작은 이발", emoji: "🦷" },
+    { name: "검은 실", emoji: "🧵" },
+    { name: "유리 눈", emoji: "👁️" }
+];
+
+/* 현재 제조실 상태 */
+
+let currentExperienceMode = "free";
+let selectedIngredients = [];
+let draggedIngredient = null;
+let ingredientGhost = null;
+
+/* 다도 레시피의 정답 순서 */
+
+/* 다도 레시피: 매번 무작위로 생성 */
+
+let dadoRecipe = [];
+
+function generateDadoRecipe() {
+
+    const shuffled = [...labIngredients];
+
+    // 재료 순서 무작위 섞기
+    for (let i = shuffled.length - 1; i > 0; i--) {
+
+        const j = Math.floor(Math.random() * (i + 1));
+
+        [shuffled[i], shuffled[j]] =
+            [shuffled[j], shuffled[i]];
+
+    }
+
+    // 앞에서부터 4개 선택
+    dadoRecipe = shuffled
+        .slice(0, 4)
+        .map(item => item.name);
+
+}
+
+/* 다도 레시피 안내 대사 */
+
+const dadoIngredientHints = {
+    "달기": "발갛고 달콤한 과일이에요.",
+    "별가루": "밤하늘에서 반작이는 걸 가져와요.",
+    "민들레": "불면 시앗이 날아가는 곷이에요.",
+    "달빛": "밤 창문 들어오는 빛이에요.",
+    "솜사탕": "구름처럼 폭신폭신 달콤해요.",
+    "비눗방울": "동그랗고 투명하게 부풀어 올라요.",
+    "깃털": "새 덜어드린 가벼운 거요.",
+    "굴": "벌 열심히 모은 달콤한 액체예요.",
+    "거울 조각": "얼굴 비춰 주는 물건 일부에요.",
+    "작은 이발": "입 안 있는 작고 단단한 거예요.",
+    "검은 실": "바느질 사용하는 줄이에요.",
+    "유리 눈": "투명하고 반작이는 눈 모양이에요."
+};
+
+
+/* 다음 재료 안내하기 */
+
+function showDadoNextStep(step) {
+
+    const ingredient = dadoRecipe[step];
+
+    if (!ingredient) return;
+
+    const useHint = Math.random() < 0.5;
+
+    let message;
+
+    if (useHint) {
+
+        message = "다음에는 " +
+            dadoIngredientHints[ingredient] +
+            " 잘 찾아봐요";
+
+    } else {
+
+        message = "다음 재료는 " +
+            ingredient +
+            "에요. 약병에 넣어요";
+
+    }
+
+    document.getElementById("guidedGuide").textContent =
+       message;
+}
+
+
+/* 재료를 넣었을 때의 반응 */
+
+function updateDadoGuide(addedIngredient) {
+
+    const step = selectedIngredients.length - 1;
+    const expectedIngredient = dadoRecipe[step];
+
+    if (addedIngredient.name !== expectedIngredient) {
+
+        document.getElementById("guidedGuide").textContent =
+            "어, 이거 " + expectedIngredient +
+            " 아닌데요, 일단 넣어 봐요";
+
+    } else if (step === 3) {
+
+        document.getElementById("guidedGuide").textContent =
+            "재료를 전부 넣엇어요. 이제 약을 완성해 봐요";
+
+    } else {
+
+        showDadoNextStep(step + 1);
+
+    }
+
+}
+
+/* 특별 상품 화면에 표시하기 */
+
+function renderSpecialProducts() {
+
+    const grid = document.getElementById("specialProductGrid");
+
+    if (!grid) {
+        return;
+    }
+
+    grid.innerHTML = "";
+
+    specialProducts.forEach((product, index) => {
+
+        const card = document.createElement("div");
+
+        card.className = "product-card special-product-card";
+
+        const status = product.status || product.tag;
+
+let statusClass = "status-special";
+
+if (status === "판매 중지") {
+    statusClass = "status-stopped";
+} else if (status === "주의") {
+    statusClass = "status-warning";
+}
+
+card.innerHTML = `
+    <div class="product-picture">${product.emoji}</div>
+    <span class="special-status ${statusClass}">${status}</span>
+    <h3>${product.name}</h3>
+    <p>₩ ${product.price.toLocaleString("ko-KR")}</p>
+`;
+
+        card.addEventListener("click", () => {
+            openSpecialProduct(index);
+        });
+
+        grid.appendChild(card);
+
+    });
+}
+
+/* 상품 페이지 설정 */
+
+const productsPerPage = 4;
+let currentProductPage = 1;
+
+/* 장바구니에 저장된 상품 불러오기 */
+
+let cart = JSON.parse(localStorage.getItem("dadoCart") || "[]");
+
+let currentProductIndex = null;
+let currentProductType = "normal";
+
+
+/* 장바구니 저장하기 */
+
+function saveCart() {
+    localStorage.setItem("dadoCart", JSON.stringify(cart));
+}
+
+/* 이전 주문 내역 불러오기 */
+let orders = JSON.parse(
+    localStorage.getItem("dadoOrders") || "[]"
+);
+
+/* 주문 내역 저장 */
+function saveOrders() {
+    localStorage.setItem(
+        "dadoOrders",
+        JSON.stringify(orders)
+    );
+}
+
+/* 후기 작성용 구매 상품 목록 */
+
+function renderReviewProductOptions() {
+    const select = document.getElementById("reviewProduct");
+
+    if (!select) return;
+
+    select.innerHTML = `
+        <option value="">구매 상품을 선택해 주세요</option>
+    `;
+
+    const purchasedProducts = [];
+
+    orders.forEach(order => {
+        order.items.forEach(item => {
+            if (!purchasedProducts.some(
+                product => product.name === item.name
+            )) {
+                purchasedProducts.push(item);
+            }
+        });
+    });
+
+    if (purchasedProducts.length === 0) {
+        select.innerHTML = `
+            <option value="">아직 구매 내역이 없어요</option>
+        `;
+        return;
+    }
+
+    purchasedProducts.forEach(item => {
+        const option = document.createElement("option");
+
+        option.value = item.name;
+        option.textContent =
+            item.korean && item.korean !== item.name
+                ? item.korean + " (" + item.name + ")"
+                : item.name;
+
+        select.appendChild(option);
+    });
+}
+
+/* 상품 표시하기 */
+
+function renderProducts() {
+
+    const grid = document.getElementById("productGrid");
+    const pagination = document.getElementById("productPagination");
+
+    const totalPages = Math.ceil(products.length / productsPerPage);
+
+    if (currentProductPage > totalPages) {
+        currentProductPage = totalPages || 1;
+    }
+
+    const start = (currentProductPage - 1) * productsPerPage;
+    const end = start + productsPerPage;
+
+    const pageProducts = products.slice(start, end);
+
+    grid.innerHTML = "";
+
+    pageProducts.forEach((product, index) => {
+
+        const productIndex = start + index;
+
+        grid.innerHTML += `
+            <button class="product-card"
+                    type="button"
+                    onclick="openProduct(${productIndex})">
+
+                <div class="product-picture">
+                    ${product.emoji}
+                </div>
+
+                <span class="product-tag">
+                    ${product.tag}
+                </span>
+
+                <h3>${product.name}</h3>
+
+<div class="product-korean">
+    ${product.korean}
+</div>
+
+<div class="product-price">
+                    ₩ ${product.price.toLocaleString("ko-KR")}
+                </div>
+
+            </button>
+        `;
+
+    });
+
+    renderPagination(totalPages);
+}
+
+
+/* 페이지 번호 표시하기 */
+
+function renderPagination(totalPages) {
+
+    const pagination = document.getElementById("productPagination");
+
+    pagination.innerHTML = "";
+
+    if (totalPages <= 1) {
+        return;
+    }
+
+    pagination.innerHTML += `
+        <button onclick="changeProductPage(${currentProductPage - 1})"
+                ${currentProductPage === 1 ? "disabled" : ""}>
+            ‹
+        </button>
+    `;
+
+    for (let i = 1; i <= totalPages; i++) {
+
+        pagination.innerHTML += `
+            <button
+                class="${i === currentProductPage ? "current" : ""}"
+                onclick="changeProductPage(${i})">
+                ${i}
+            </button>
+        `;
+
+    }
+
+    pagination.innerHTML += `
+        <button onclick="changeProductPage(${currentProductPage + 1})"
+                ${currentProductPage === totalPages ? "disabled" : ""}>
+            ›
+        </button>
+    `;
+}
+
+
+/* 페이지 이동 */
+
+function changeProductPage(page) {
+
+    const totalPages = Math.ceil(products.length / productsPerPage);
+
+    if (page < 1 || page > totalPages) {
+        return;
+    }
+
+    currentProductPage = page;
+
+    renderProducts();
+renderSpecialProducts();
+setInterval(renderOrderHistory, 10000);
+
+    document.getElementById("productGrid").scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+}
+
+
+/* 상품 상세 팝업 열기 */
+
+
+function openProduct(index) {
+
+    const product = products[index];
+
+    if (!product) {
+        return;
+    }
+
+    currentProductIndex = index;
+    currentProductType = "normal";
+
+    showProductDetail(product);
+}
+
+
+/* 특별 상품 상세 팝업 열기 */
+
+function openSpecialProduct(index) {
+
+    const product = specialProducts[index];
+
+    if (!product) {
+        return;
+    }
+
+    currentProductIndex = index;
+    currentProductType = "special";
+
+    showProductDetail(product);
+}
+
+
+/* 공통 상품 상세 표시 */
+
+function showProductDetail(product) {
+
+    document.getElementById("modalPicture").textContent = product.emoji;
+    document.getElementById("modalTag").textContent = product.tag;
+    document.getElementById("modalName").textContent = product.name;
+    document.getElementById("modalDescription").textContent = product.description;
+
+    document.getElementById("modalPrice").textContent =
+        "₩ " + product.price.toLocaleString("ko-KR");
+
+    // 주의 문구 표시
+    const warning = document.getElementById("modalWarning");
+
+    if (product.warning) {
+        warning.textContent = "⚠️ " + product.warning;
+        warning.style.display = "block";
+    } else {
+        warning.textContent = "";
+        warning.style.display = "none";
+    }
+
+    // 구매 버튼 설정
+    const button = document.getElementById("modalCartButton");
+
+    if (product.status === "판매 중지") {
+
+        button.textContent = "판매 중지되엇어요";
+        button.disabled = true;
+
+    } else {
+
+        button.textContent = "물건 담아요";
+        button.disabled = false;
+
+    }
+
+    document.getElementById("modalCartMessage").textContent = "";
+
+    document.getElementById("productModalOverlay").classList.add("active");
+
+    document.body.style.overflow = "hidden";
+}
+
+
+/* 상품 상세 팝업 닫기 */
+
+function closeProduct() {
+
+    document.getElementById("productModalOverlay").classList.remove("active");
+
+    document.body.style.overflow = "";
+}
+
+/* 장바구니에 상품 담기 */
+
+function addToCart() {
+
+    if (currentProductIndex === null) {
+        return;
+    }
+
+    // 현재 선택한 상품 종류에 따라 가져오기
+    const product = currentProductType === "special"
+        ? specialProducts[currentProductIndex]
+        : products[currentProductIndex];
+
+    if (!product) {
+        return;
+    }
+
+    // 판매 중지 상품은 담을 수 없음
+    if (product.status === "판매 중지") {
+        document.getElementById("modalCartMessage").textContent =
+            "판매 중지되엇어요.";
+        return;
+    }
+
+    // 이미 담은 상품인지 확인
+    const existingProduct = cart.find(item => item.name === product.name);
+
+    if (existingProduct) {
+
+        existingProduct.quantity++;
+
+    } else {
+
+        cart.push({
+            name: product.name,
+            korean: product.korean || product.name,
+            emoji: product.emoji,
+            price: product.price,
+            quantity: 1
+        });
+
+    }
+
+    // 장바구니 저장
+    saveCart();
+
+    // 전체 수량 확인
+    const totalQuantity = cart.reduce(
+        (total, item) => total + item.quantity,
+        0
+    );
+
+    document.getElementById("modalCartMessage").textContent =
+        "장바구니에 담앗어요. 지금 " + totalQuantity + "개";
+}
+
+/* 장바구니 화면 그리기 */
+function renderCart() {
+    const cartItems = document.getElementById("cartItems");
+    const cartTotal = document.getElementById("cartTotal");
+
+    if (!cartItems || !cartTotal) return;
+
+    cartItems.innerHTML = "";
+
+    if (cart.length === 0) {
+document.getElementById("checkoutButton").disabled = true;
+        cartItems.innerHTML = `
+            <div class="cart-empty">
+                🧺<br>
+                장바구니가 비어 잇어요.<br>
+                다도 사이트에서 상품 구경해 봐요
+            </div>
+        `;
+
+        cartTotal.textContent = "₩ 0";
+        return;
+    }
+
+document.getElementById("checkoutButton").disabled = false;
+
+    let total = 0;
+
+    cart.forEach((item, index) => {
+        total += item.price * item.quantity;
+
+        cartItems.innerHTML += `
+            <div class="cart-item">
+                <div class="cart-item-picture">${item.emoji}</div>
+
+                <div class="cart-item-info">
+                    <h3>${item.name}</h3>
+                    <p>${item.korean}</p>
+                    <p>₩ ${item.price.toLocaleString("ko-KR")}</p>
+
+                    <div class="cart-controls">
+                        <button onclick="changeQuantity(${index}, -1)">−</button>
+                        <span>${item.quantity}</span>
+                        <button onclick="changeQuantity(${index}, 1)">+</button>
+                    </div>
+                </div>
+
+                <button class="cart-remove"
+                    onclick="removeFromCart(${index})">
+                    삭제
+                </button>
+            </div>
+        `;
+    });
+
+    cartTotal.textContent = "₩ " + total.toLocaleString("ko-KR");
+}
+
+
+/* 상품 수량 변경 */
+function changeQuantity(index, amount) {
+    if (!cart[index]) return;
+
+    cart[index].quantity += amount;
+
+    if (cart[index].quantity <= 0) {
+        cart.splice(index, 1);
+    }
+
+    saveCart();
+    renderCart();
+}
+
+
+/* 상품 삭제 */
+function removeFromCart(index) {
+    if (!cart[index]) return;
+
+    cart.splice(index, 1);
+
+    saveCart();
+    renderCart();
+}
+
+/* 주문하기 */
+function placeOrder() {
+    if (cart.length === 0) return;
+
+    const orderNumber =
+        "dado-" + Date.now().toString().slice(-8);
+
+    const newOrder = {
+    number: orderNumber,
+    date: new Date().toLocaleString("ko-KR"),
+
+    // 배송 정보
+    createdAt: Date.now(),
+carrier: "dado delivery",
+deliveryman: "dadodeliveryman",
+
+    // 주문 상품
+    items: cart.map(item => ({
+        name: item.name,
+        korean: item.korean,
+        emoji: item.emoji,
+        price: item.price,
+        quantity: item.quantity
+    })),
+
+    total: cart.reduce(
+        (sum, item) => sum + item.price * item.quantity,
+        0
+    )
+};
+
+    orders.unshift(newOrder);
+    saveOrders();
+    renderReviewProductOptions();
+
+    /* 주문 완료 후 장바구니 비우기 */
+    cart = [];
+    saveCart();
+
+    renderCart();
+    renderOrderHistory();
+
+    document.getElementById("orderMessage").innerHTML =
+        "주문이 완료되엇어요.<br>" +
+        "주문 번호: " + orderNumber +
+        "<br> 주문해 줘서 고마워요";
+}
+
+
+/* 지난 주문 내역 표시 */
+function renderOrderHistory() {
+    const history = document.getElementById("orderHistory");
+
+    if (!history) return;
+
+    history.innerHTML = "";
+
+    if (orders.length === 0) {
+        history.innerHTML = `
+            <div class="order-empty">
+                📦<br>
+                아직 주문 내역이 없어요<br>
+                사이트에서 첫 주문 해봐요
+            </div>
+        `;
+        return;
+    }
+
+    const deliverySteps = [
+        "주문 접수",
+        "상품 준비 중",
+        "포장 완료",
+        "배송 중",
+        "배송 완료"
+    ];
+
+    orders.forEach((order, index) => {
+
+        // 주문 시각을 기준으로 배송 단계 계산
+        let currentStep = 0;
+
+        if (order.createdAt) {
+            const elapsedMinutes =
+                (Date.now() - order.createdAt) / 60000;
+
+            currentStep = Math.min(
+                4,
+                Math.floor(elapsedMinutes)
+            );
+        }
+
+        const progress = currentStep * 25;
+
+        const productList = order.items.map(item => {
+            return `
+                <div>
+                    ${item.emoji} ${item.name}
+                    × ${item.quantity}
+                </div>
+            `;
+        }).join("");
+
+        const timeline = deliverySteps.map((step, stepIndex) => {
+
+            let className = "";
+
+            if (stepIndex < currentStep) {
+                className = "completed";
+            } else if (stepIndex === currentStep) {
+                className = "current";
+            }
+
+            return `
+                <div class="delivery-step ${className}">
+                    <div class="delivery-step-circle">
+                        ${stepIndex < currentStep ? "✓" : stepIndex + 1}
+                    </div>
+                    <span>${step}</span>
+                </div>
+            `;
+        }).join("");
+
+        history.innerHTML += `
+            <div class="order-history-card">
+
+                <div class="order-history-top">
+                    <span>${order.number}</span>
+                    <span>${order.date}</span>
+
+                    <button
+                        class="order-delete-button"
+                        onclick="requestDeleteOrder(${index})"
+                        title="주문 내역 삭제"
+                    >×</button>
+                </div>
+
+                <div class="delivery-status-area">
+
+                    <div class="delivery-status-title">
+                        <span>📦 배송 현황</span>
+                        <strong>${deliverySteps[currentStep]}</strong>
+                    </div>
+
+                    <div class="delivery-progress">
+                        <div
+                            class="delivery-progress-fill"
+                            style="width: ${progress}%"
+                        ></div>
+                    </div>
+
+                    <div class="delivery-timeline">
+                        ${timeline}
+                    </div>
+
+                    <div class="delivery-information">
+                        <span>택배사</span>
+                        <strong>${order.carrier || "dado delivery"}</strong>
+
+                        <span>담당 배송원</span>
+                        <strong>${order.deliveryman || "dadodeliveryman"}</strong>
+                    </div>
+
+                    ${currentStep === 4 ? `
+                        <button
+                            class="delivery-stamp"
+                            onclick="
+                                const message = this.nextElementSibling;
+                                message.hidden = !message.hidden;
+                            "
+                        >
+                            <span>delivered</span>
+                            <strong>배송 완료</strong>
+                            <small>dado pharmacy</small>
+                        </button>
+
+                        <p class="delivery-stamp-message" hidden>
+                            이용해 줘서 고마워요
+                        </p>
+                    ` : ""}
+
+                </div>
+
+                <div class="order-history-products">
+                    ${productList}
+                </div>
+
+                <div class="order-history-total">
+                    ₩ ${order.total.toLocaleString("ko-KR")}
+                </div>
+
+            </div>
+        `;
+    });
+}
+
+/* 삭제할 주문 번호 기억하기 */
+let deleteOrderIndex = null;
+
+
+/* 삭제 확인 팝업 열기 */
+function requestDeleteOrder(index) {
+    deleteOrderIndex = index;
+
+    document.getElementById("deleteOrderModal")
+        .classList.add("active");
+
+    document.body.style.overflow = "hidden";
+}
+
+
+/* 삭제 취소 */
+function closeDeleteOrderModal() {
+    document.getElementById("deleteOrderModal")
+        .classList.remove("active");
+
+    document.body.style.overflow = "";
+
+    deleteOrderIndex = null;
+}
+
+
+/* 정말 삭제하기 */
+function confirmDeleteOrder() {
+    if (deleteOrderIndex === null) return;
+
+    orders.splice(deleteOrderIndex, 1);
+
+    saveOrders();
+    renderOrderHistory();
+
+    closeDeleteOrderModal();
+}
+
+/* 팝업 바깥을 누르면 닫기 */
+
+document.getElementById("productModalOverlay").addEventListener("click", function(event) {
+
+    if (event.target === this) {
+        closeProduct();
+    }
+
+});
+
+
+/* ESC 키를 눌러도 닫기 */
+
+document.addEventListener("keydown", function(event) {
+
+    if (event.key === "Escape") {
+        closeProduct();
+    }
+
+});
+
+
+/* 처음 상품 목록 불러오기 */
+
+renderProducts();
+renderSpecialProducts();
+setInterval(renderOrderHistory, 10000);
+
+
+/* 회원 정보 불러오기 */
+let membership = JSON.parse(
+    localStorage.getItem("dadoMember") || "null"
+);
+
+
+/* 회원증 발급 */
+function createMembership() {
+    const input = document.getElementById("memberNameInput");
+    const name = input.value.trim() || "dear friend";
+
+    membership = {
+        name: name,
+        number: "dado-" + Math.floor(100000 + Math.random() * 900000)
+    };
+
+    localStorage.setItem(
+        "dadoMember",
+        JSON.stringify(membership)
+    );
+
+    renderMembership();
+}
+
+
+/* 회원증 화면 표시 */
+function renderMembership() {
+    const createArea = document.getElementById("memberCreate");
+    const card = document.getElementById("memberCard");
+    const message = document.getElementById("memberMessage");
+
+    if (!createArea || !card) return;
+
+    if (membership) {
+        createArea.style.display = "none";
+        card.style.display = "block";
+
+        document.getElementById("memberCardName").textContent =
+            membership.name;
+
+        document.getElementById("memberCardNumber").textContent =
+            membership.number;
+
+        message.textContent = "회원이 된 거 환영해요";
+    } else {
+        createArea.style.display = "block";
+        card.style.display = "none";
+        message.textContent = "";
+    }
+}
+
+
+/* 제조실 모드 화면 전환 */
+
+function openExperienceMode(mode) {
+
+document.getElementById("recipeBookModal").style.display = "none";
+
+    currentExperienceMode = mode;
+    selectedIngredients = [];
+
+    document.getElementById("experienceHome").style.display = "none";
+
+    document.getElementById("guidedLab").style.display =
+        mode === "guided" ? "block" : "none";
+
+    document.getElementById("freeLab").style.display =
+        mode === "free" ? "block" : "none";
+
+    renderExperienceLab();
+
+    if (mode === "guided") {
+
+    generateDadoRecipe();
+
+    document.getElementById("guidedGuide").textContent =
+        " 첫 번재 재료 " +
+        dadoRecipe[0] +
+        " 에요. 약병에 넣어 봐요";
+
+}
+
+    if (mode === "free") {
+        document.querySelector("#freeLab .dado-guide").textContent =
+            " 마음대로 만들어 봐요. 재료 4개 넣을 수 잇어요";
+    }
+
+}
+
+
+/* 모드 선택 화면으로 돌아가기 */
+
+function backToExperienceHome() {
+
+    document.getElementById("experienceHome").style.display = "block";
+
+    document.getElementById("guidedLab").style.display = "none";
+
+    document.getElementById("freeLab").style.display = "none";
+
+    selectedIngredients = [];
+
+}
+
+
+/* 제조실 화면 만들기 */
+
+function renderExperienceLab() {
+
+    const target = document.getElementById(
+        currentExperienceMode === "guided"
+            ? "guidedLabContent"
+            : "freeLabContent"
+    );
+
+    target.innerHTML = `
+        <div class="lab-workspace">
+
+            <div class="ingredient-area">
+
+                <h3> 재료 보관</h3>
+                <p>재료 글어서 약병에 넣어요</p>
+
+                <div class="ingredient-shelf"></div>
+
+            </div>
+
+            <div class="bottle-area">
+
+                <h3>약병</h3>
+
+                <div class="medicine-bottle">
+    <div class="bottle-contents"></div>
+    <div class="bottle-shine"></div>
+</div>
+
+                <p class="ingredient-count">재료 0 / 4</p>
+
+
+<div class="custom-name-area"
+     style="${currentExperienceMode === 'free' ? '' : 'display:none;'}">
+
+    <p>이번 약 이름 정해 봐요</p>
+
+    <input
+        type="text"
+        class="custom-medicine-name"
+        placeholder="약 이름을 입력해 주세요"
+        maxlength="20"
+    >
+
+
+</div>
+
+<div class="medicine-result" style="display:none;"></div>
+
+<button class="make-medicine" onclick="makeMedicine()">
+    만들기
+</button>
+
+<button
+    class="remake-medicine"
+    onclick="restartMedicine()"
+    style="display:none;"
+>
+    다시하기
+</button>
+
+                <button class="clear-ingredients">
+                    다시 시작하기
+                </button>
+
+            </div>
+
+        </div>
+    `;
+
+    const shelf = target.querySelector(".ingredient-shelf");
+
+    labIngredients.forEach((ingredient, index) => {
+
+        const item = document.createElement("div");
+
+        item.className = "ingredient-item";
+        item.dataset.index = index;
+
+        item.innerHTML = `
+            <span>${ingredient.emoji}</span>
+            <small>${ingredient.name}</small>
+        `;
+
+        shelf.appendChild(item);
+
+    });
+
+
+    /* 재료를 누르고 드래그하기 */
+
+    shelf.addEventListener("pointerdown", function(event) {
+
+        const item = event.target.closest(".ingredient-item");
+
+        if (!item || selectedIngredients.length >= 4) {
+            return;
+        }
+
+        event.preventDefault();
+
+        draggedIngredient =
+            labIngredients[Number(item.dataset.index)];
+
+        ingredientGhost = document.createElement("div");
+
+        ingredientGhost.className = "ingredient-ghost";
+        ingredientGhost.textContent = draggedIngredient.emoji;
+
+        document.body.appendChild(ingredientGhost);
+
+        moveIngredientGhost(event);
+
+    });
+
+
+    /* 드래그 중인 재료 움직이기 */
+
+    document.onpointermove = function(event) {
+
+        if (!ingredientGhost) {
+            return;
+        }
+
+        moveIngredientGhost(event);
+
+    };
+
+
+    /* 약병에 재료 넣기 */
+
+    document.onpointerup = function(event) {
+
+        if (!ingredientGhost) {
+            return;
+        }
+
+        const bottle = target.querySelector(".medicine-bottle");
+        const rect = bottle.getBoundingClientRect();
+
+        const droppedInside =
+            event.clientX >= rect.left &&
+            event.clientX <= rect.right &&
+            event.clientY >= rect.top &&
+            event.clientY <= rect.bottom;
+
+        if (droppedInside && selectedIngredients.length < 4) {
+
+            const position = selectedIngredients.length;
+
+            selectedIngredients.push(draggedIngredient);
+
+                        updateMedicineBottle();
+
+            if (currentExperienceMode === "guided") {
+
+                updateDadoGuide(draggedIngredient);
+
+            } else {
+
+                setDadoLabMessage(
+                    draggedIngredient.name +
+                    " 넣엇어요. 다음 재료도 넣어 봐요"
+                );
+
+            }
+
+            if (selectedIngredients.length === 4) {
+
+                if (currentExperienceMode === "guided") {
+
+                    setDadoLabMessage(
+                        "재료 네 개 다 넣엇어요. 이제 약 만들어 봐요."
+                    );
+
+                } else {
+
+                    setDadoLabMessage(
+                        "우와, 재료가 다 모엿어요. 이제 약 만들어 봐요."
+                    );
+
+                }
+
+            }
+
+        }
+
+        ingredientGhost.remove();
+
+        ingredientGhost = null;
+        draggedIngredient = null;
+
+    };
+
+
+    /* 다시 시작 버튼 */
+
+    target.querySelector(".clear-ingredients").addEventListener(
+        "click",
+        clearIngredients
+    );
+
+}
+
+
+/* 드래그 아이콘 위치 */
+
+function moveIngredientGhost(event) {
+
+    ingredientGhost.style.left = event.clientX + "px";
+    ingredientGhost.style.top = event.clientY + "px";
+
+}
+
+
+/* 약병 내용 갱신 */
+
+function updateMedicineBottle() {
+
+    const target = document.getElementById(
+        currentExperienceMode === "guided"
+            ? "guidedLabContent"
+            : "freeLabContent"
+    );
+
+    const bottle = target.querySelector(".medicine-bottle");
+    const contents = target.querySelector(".bottle-contents");
+    const count = target.querySelector(".ingredient-count");
+
+    const potionColors = {
+        "달기": "#f28b9d",
+        "별가루": "#b7a5ed",
+        "민들레": "#f5d978",
+        "달빛": "#a9b9ec",
+        "솜사탕": "#efaed5",
+        "비눗방울": "#9bdde0",
+        "깃털": "#d9d9ed",
+        "굴": "#e9ad45",
+        "거울 조각": "#a9c9e8",
+        "작은 이발": "#d9d4c8",
+        "검은 실": "#77718d",
+        "유리 눈": "#8eb9a8"
+    };
+
+    if (selectedIngredients.length > 0) {
+
+        const firstColor =
+            potionColors[selectedIngredients[0].name];
+
+        const lastColor =
+            potionColors[
+                selectedIngredients[selectedIngredients.length - 1].name
+            ];
+
+        contents.style.height = "58%";
+        contents.style.background =
+            `linear-gradient(135deg, ${firstColor}, ${lastColor})`;
+
+    } else {
+
+        contents.style.height = "0%";
+        contents.style.background = "transparent";
+
+    }
+
+    count.textContent =
+        "재료 " + selectedIngredients.length + " / 4";
+
+    bottle.classList.remove("bottle-shake");
+    void bottle.offsetWidth;
+    bottle.classList.add("bottle-shake");
+
+}
+
+
+/* 다도 안내 문구 변경 */
+
+function setDadoLabMessage(message) {
+
+    if (currentExperienceMode === "guided") {
+
+        document.getElementById("guidedGuide").textContent =
+            message;
+
+    } else {
+
+        document.querySelector("#freeLab .dado-guide").textContent =
+            message;
+
+    }
+
+}
+
+/* 다도 레시피 진행 안내 */
+
+function updateDadoGuide(addedIngredient) {
+
+    const step = selectedIngredients.length - 1;
+
+    const expectedIngredient = dadoRecipe[step];
+
+    let reaction = "";
+
+    if (addedIngredient.name === expectedIngredient) {
+
+        reaction = "맞아요 잘햇어요. ";
+
+    } else {
+
+        reaction = "어라? 그거 아니엇어요. 그래도 괜찮아요. ";
+
+    }
+
+    // 마지막 재료를 넣었을 때
+    if (step === 3) {
+
+        setDadoLabMessage(
+            reaction + "재료 네 개 다 모엿어요. 이제 약 만들어 봐요"
+        );
+
+        return;
+
+    }
+
+    // 다음 재료 안내
+    const nextIngredient = dadoRecipe[step + 1];
+
+    const useHint = Math.random() < 0.5;
+
+    let nextMessage;
+
+    if (useHint) {
+
+        nextMessage =
+            dadoIngredientHints[nextIngredient];
+
+    } else {
+
+        nextMessage =
+            "다음 재료 " + nextIngredient + " 에요";
+
+    }
+
+    setDadoLabMessage(
+        reaction + nextMessage
+    );
+
+}
+
+
+/* 재료 비우기 */
+
+function clearIngredients() {
+
+    selectedIngredients = [];
+
+    updateMedicineBottle();
+
+    if (currentExperienceMode === "guided") {
+
+        setDadoLabMessage(
+    "다시 해 봐요. 첫 번재 재료는 " +
+    dadoRecipe[0] +
+    " 이에요"
+);
+
+    } else {
+
+        setDadoLabMessage(
+            "약병을 비웟어요. 다시 만들어 봐요 "
+        );
+
+    }
+
+}
+
+/* 재료별 약효 데이터 */
+
+const ingredientEffects = {
+
+    "달기": [
+        "몸에 힘이 다시 생겨나요.",
+        "기분이 밝고 즐거워져요.",
+        "지친 몸에 달콤한 힘을 줘요."
+    ],
+
+    "별가루": [
+        "잠시 동안 모든 감각이 에민해져요.",
+        "굼속에서 원하는 곳으로 갈 수 잇어요.",
+        "어두운 곳에서도 작은 빛이 보여요."
+    ],
+
+    "민들레": [
+        "몸이 깃털처럼 가벼워져요.",
+        "오래전 기억이 하나 더올라요.",
+        "바람이 어디로 가는지 알 수 잇어요."
+    ],
+
+    "달빛": [
+        "깊고 편안하게 잠들 수 잇어요.",
+        "잠든 동안 조금 이상한 굼을 구게 돼요.",
+        "주변의 시간이 느리게 가는 것 같아요."
+    ],
+
+    "솜사탕": [
+        "몸이 폭신폭신해지는 기분이 들어요.",
+        "슬픈 마음이 잠시 사라져요.",
+        "달콤한 냄새가 주변에 퍼져요."
+    ],
+
+    "비눗방울": [
+        "몸이 하늘로 더오르는 것 같아요.",
+        "주변의 소리가 멀리서 들려요.",
+        "몸이 투명해지는 것 같아요."
+    ],
+
+    "깃털": [
+        "몸이 가벼워지고 움직임이 발라져요.",
+        "높은 곳에서도 무섭지 않아요.",
+        "작은 소리도 놓치지 않게 돼요."
+    ],
+
+    "굴": [
+        "몸에 힘이 조금식 돌아와요.",
+        "목소리가 부드럽고 달콤해져요.",
+        "몸 안에 다듯한 기운이 퍼져요."
+    ],
+
+    "거울 조각": [
+        "자신의 모습이 조금 낯설게 보여요.",
+        "잊고 잇던 얼굴이 더올라요.",
+        "거울 속 모습이 조금 다르게 보여요."
+    ],
+
+    "작은 이발": [
+        "무언가를 십는 힘이 강해져요.",
+        "무언가 물어듣고 싶은 마음이 생겨요.",
+        "처음 맡는 냄새도 구별할 수 잇어요."
+    ],
+
+    "검은 실": [
+        "귾어진 물건을 다시 이어 붙일 수 잇어요.",
+        "누군가와 이어져 잇는 기분이 들어요.",
+        "보이지 않는 무언가의 흔적이 보여요."
+    ],
+
+    "유리 눈": [
+        "평소에는 보이지 않던 것이 보여요.",
+        "다른 사람의 표정을 잘 알 수 잇어요.",
+        "눈을 감아도 주변 모습이 조금 보여요."
+    ]
+
+};
+
+/* 약 이름 생성에 사용할 단어 */
+
+const medicineNameWords = {
+    "달기": ["달기", "붉은", "달콤한"],
+    "별가루": ["별빛", "은하", "반작이는"],
+    "민들레": ["민들레", "바람", "노란"],
+    "달빛": ["달빛", "월광", "고요한"],
+    "솜사탕": ["솜사탕", "구름", "폭신한"],
+    "비눗방울": ["비눗방울", "투명한", "물거품"],
+    "깃털": ["깃털", "하늘", "가벼운"],
+    "굴": ["굴", "황금", "달콤한"],
+    "거울 조각": ["거울", "반사", "뒤집힌"],
+    "작은 이발": ["이발", "송곳니", "날카로운"],
+    "검은 실": ["검은 실", "매듭", "그림자"],
+    "유리 눈": ["유리 눈", "시선", "투명한"]
+};
+
+
+/* 무작위 항목 선택 */
+
+function randomItem(array) {
+    return array[Math.floor(Math.random() * array.length)];
+}
+
+
+/* 약 이름 자동 생성 */
+
+function generateMedicineName() {
+
+    const first = randomItem(
+        medicineNameWords[selectedIngredients[0].name]
+    );
+
+    const second = randomItem(
+        medicineNameWords[selectedIngredients[1].name]
+    );
+
+    const endings = [
+        "의 물약",
+        "의 비약",
+     " 알약",
+        " 시럽"
+    ];
+
+    return first + " " + second + randomItem(endings);
+
+}
+
+
+/* 재료에 따른 약효 생성 */
+
+function generateMedicineEffect() {
+
+    return selectedIngredients.map(item => {
+
+        const effects = ingredientEffects[item.name];
+
+        return randomItem(effects);
+
+    }).join(" ");
+
+}
+
+/* 약 만들기 */
+
+function makeMedicine() {
+
+    if (selectedIngredients.length < 4) {
+
+        setDadoLabMessage(
+            "아직 재료가 부족해요, 재료 네 개를 넣어 줘요"
+        );
+
+        return;
+    }
+
+    const target = document.getElementById(
+        currentExperienceMode === "guided"
+            ? "guidedLabContent"
+            : "freeLabContent"
+    );
+
+    const bottle = target.querySelector(".medicine-bottle");
+    const result = target.querySelector(".medicine-result");
+
+    // 다도 모드는 자동으로 이름 생성
+    let medicineName;
+
+    if (currentExperienceMode === "guided") {
+
+        medicineName = generateMedicineName();
+
+    } else {
+
+        const input = target.querySelector(".custom-medicine-name");
+
+        medicineName = input.value.trim();
+
+        if (!medicineName) {
+
+            setDadoLabMessage(
+                "약 이름을 먼저 정해 줘요"
+            );
+
+            input.focus();
+
+            return;
+        }
+
+    }
+
+    // 실제로 넣은 재료에 따라 효과 생성
+    const effect = generateMedicineEffect();
+
+    // 다도 레시피 정답 확인
+    const isCorrect =
+        currentExperienceMode === "guided" &&
+        selectedIngredients.every(
+            (item, index) => item.name === dadoRecipe[index]
+        );
+
+    // 약병 흔들기
+    bottle.classList.remove("bottle-shake");
+    void bottle.offsetWidth;
+    bottle.classList.add("bottle-shake");
+
+    // 제조 결과 표시
+    result.style.display = "block";
+
+// 만들기 버튼 숨기고 다시 만들기 버튼 표시
+target.querySelector(".make-medicine").style.display = "none";
+target.querySelector(".remake-medicine").style.display = "block";
+target.querySelector(".clear-ingredients").style.display = "none";
+
+    result.innerHTML = `
+        <h3>${medicineName}</h3>
+
+        <p><strong>사용한 재료</strong></p>
+
+        <p>
+            ${selectedIngredients.map(item =>
+                item.emoji + " " + item.name
+            ).join(" · ")}
+        </p>
+
+        <p><strong>약의 효과</strong></p>
+
+        <p>${effect}</p>
+
+        <p class="result-comment">
+            ${currentExperienceMode === "guided"
+                ? (isCorrect
+                    ? "다도 레시피 그대로 만들엇어요. 정말 잘햇어요."
+                    : "다도 생각과 조금 다른 약이 만들어졋어요. 그래도 괜찮아요.")
+                : "우와, 약이 완성됏어요. 다도도 마음에 들어요."}
+        </p>
+    `;
+
+    // 레시피 북에 기록
+    const recipeBook = JSON.parse(
+        localStorage.getItem("dadoRecipeBook") || "[]"
+    );
+
+    recipeBook.push({
+
+        name: medicineName,
+
+        ingredients: selectedIngredients.map(item => ({
+            name: item.name,
+            emoji: item.emoji
+        })),
+
+        effect: effect,
+
+        mode: currentExperienceMode,
+
+        correct: isCorrect,
+
+        date: new Date().toLocaleString("ko-KR")
+
+    });
+
+    localStorage.setItem(
+        "dadoRecipeBook",
+        JSON.stringify(recipeBook)
+    );
+
+    // 다도 안내
+    setDadoLabMessage(
+        "약이 완성됏어요. 아래에서 결과를 확인해 줘요"
+    );
+
+}
+
+/* 새 약 만들기 */
+
+function restartMedicine() {
+
+    selectedIngredients = [];
+
+    const target = document.getElementById(
+        currentExperienceMode === "guided"
+            ? "guidedLabContent"
+            : "freeLabContent"
+    );
+
+    const result = target.querySelector(".medicine-result");
+    const makeButton = target.querySelector(".make-medicine");
+    const remakeButton = target.querySelector(".remake-medicine");
+    const clearButton = target.querySelector(".clear-ingredients");
+    const nameInput = target.querySelector(".custom-medicine-name");
+
+    result.style.display = "none";
+    result.innerHTML = "";
+
+    makeButton.style.display = "block";
+    remakeButton.style.display = "none";
+    clearButton.style.display = "block";
+
+    if (nameInput) {
+        nameInput.value = "";
+    }
+
+    updateMedicineBottle();
+
+    if (currentExperienceMode === "guided") {
+
+        generateDadoRecipe();
+
+        setDadoLabMessage(
+            "새로운 레시피를 준비햇어요. 첫 번재 재료는 " +
+            dadoRecipe[0] +
+            " 이에요"
+        );
+
+    } else {
+
+        setDadoLabMessage(
+            "새로운 약을 만들어 봐요. 재료 네 개를 넣어 줘요"
+        );
+
+    }
+
+}
+
+/* 레시피 북 페이지 상태 */
+
+let recipeBookPage = 0;
+let openedRecipeDetail = null;
+
+const recipeIngredientColors = {
+    "달기": "#e98b9b",
+    "별가루": "#e9d477",
+    "민들레": "#e6d18a",
+    "달빛": "#a9a2dc",
+    "솜사탕": "#e8b4d5",
+    "비눗방울": "#a9dce0",
+    "깃털": "#c8d5e5",
+    "굴": "#dfa64e",
+    "거울 조각": "#a8b9d1",
+    "작은 이발": "#d7d1c3",
+    "검은 실": "#686078",
+    "유리 눈": "#8db9b5"
+};
+
+
+/* 레시피 북 열기 */
+
+function openRecipeBook() {
+
+    recipeBookPage = 0;
+    openedRecipeDetail = null;
+
+    document.getElementById("recipeBookModal").style.display = "flex";
+
+    renderRecipeBook();
+
+}
+
+
+/* 레시피 북 내용 표시 */
+
+function renderRecipeBook() {
+
+    const content = document.getElementById("recipeBookContent");
+    const navigation = document.getElementById("recipeBookNavigation");
+    const pageNumber = document.getElementById("recipeBookPageNumber");
+
+    const recipeBook = JSON.parse(
+        localStorage.getItem("dadoRecipeBook") || "[]"
+    );
+
+    content.innerHTML = "";
+
+    /* 약 상세 정보 화면 */
+
+    if (openedRecipeDetail !== null) {
+
+        navigation.style.display = "none";
+
+        const medicine = recipeBook[openedRecipeDetail];
+
+        if (!medicine) {
+            openedRecipeDetail = null;
+            renderRecipeBook();
+            return;
+        }
+
+        const detail = document.createElement("div");
+        detail.className = "recipe-detail";
+
+        detail.innerHTML = `
+            <button class="recipe-detail-back"
+                    onclick="closeRecipeDetail()">
+                ← 책으로 돌아가기
+            </button>
+
+            <div class="recipe-detail-bottle">
+                <div class="recipe-bottle">
+                    <div class="recipe-bottle-liquid"></div>
+                    <div class="recipe-bottle-shine"></div>
+                </div>
+            </div>
+
+            <h2>${medicine.name}</h2>
+
+            <div class="recipe-detail-section">
+                <h3>사용한 재료</h3>
+                <div class="recipe-detail-ingredients">
+                    ${medicine.ingredients.map(item => `
+                        <span>
+                            ${item.emoji} ${item.name}
+                        </span>
+                    `).join("")}
+                </div>
+            </div>
+
+            <div class="recipe-detail-section">
+                <h3>약의 효과</h3>
+                <p>${medicine.effect}</p>
+            </div>
+
+            <div class="recipe-detail-footer">
+                ${medicine.date || ""}
+            </div>
+        `;
+
+        content.appendChild(detail);
+
+        const colors = medicine.ingredients.map(item =>
+            recipeIngredientColors[item.name] || "#b9a5c9"
+        );
+
+        const liquid = detail.querySelector(".recipe-bottle-liquid");
+
+        liquid.style.background =
+            `linear-gradient(135deg, ${colors[0]}, ${colors[1] || colors[0]}, ${colors[2] || colors[0]})`;
+
+        return;
+    }
+
+
+    /* 기록이 없는 경우 */
+
+    if (recipeBook.length === 0) {
+
+        navigation.style.display = "none";
+
+        content.innerHTML = `
+            <div class="recipe-book-empty">
+                <div style="font-size:45px;">📖</div>
+                <p>아직 책에 적힌 약이 없어요.</p>
+                <p>다도와 함게 첫 번재 약을 만들어 봐요.</p>
+            </div>
+        `;
+
+        return;
+    }
+
+
+    /* 네 개씩 페이지 나누기 */
+
+    const pageSize = 4;
+    const totalPages = Math.ceil(recipeBook.length / pageSize);
+
+    if (recipeBookPage >= totalPages) {
+        recipeBookPage = totalPages - 1;
+    }
+
+    const start = recipeBookPage * pageSize;
+    const currentMedicines = recipeBook.slice(start, start + pageSize);
+
+    navigation.style.display = "flex";
+    pageNumber.textContent = `${recipeBookPage + 1} / ${totalPages}`;
+
+    const nextButton = document.querySelector(".recipe-page-next");
+    const prevButton = document.querySelector(".recipe-page-prev");
+
+    nextButton.disabled = recipeBookPage >= totalPages - 1;
+    prevButton.disabled = recipeBookPage <= 0;
+
+
+    /* 약 카드 만들기 */
+
+    currentMedicines.forEach((medicine, index) => {
+
+        const actualIndex = start + index;
+
+        const card = document.createElement("div");
+        card.className = "recipe-book-card";
+        card.tabIndex = 0;
+        card.setAttribute("role", "button");
+        card.setAttribute("aria-label", medicine.name + " 상세 보기");
+
+        card.innerHTML = `
+            <div class="recipe-book-picture">
+                <div class="recipe-bottle">
+                    <div class="recipe-bottle-liquid"></div>
+                    <div class="recipe-bottle-shine"></div>
+                </div>
+            </div>
+
+            <div class="recipe-book-info">
+                <h3>${medicine.name}</h3>
+                <p title="${medicine.effect}">${medicine.effect}</p>
+            </div>
+        `;
+
+        const colors = medicine.ingredients.map(item =>
+            recipeIngredientColors[item.name] || "#b9a5c9"
+        );
+
+        const liquid = card.querySelector(".recipe-bottle-liquid");
+
+        liquid.style.background =
+            `linear-gradient(135deg, ${colors[0]}, ${colors[1] || colors[0]}, ${colors[2] || colors[0]})`;
+
+        card.addEventListener("click", function() {
+            openedRecipeDetail = actualIndex;
+            renderRecipeBook();
+        });
+
+        card.addEventListener("keydown", function(event) {
+            if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                openedRecipeDetail = actualIndex;
+                renderRecipeBook();
+            }
+        });
+
+        content.appendChild(card);
+
+    });
+
+}
+
+
+/* 다음 장 / 이전 장 */
+
+function changeRecipeBookPage(direction) {
+
+    const recipeBook = JSON.parse(
+        localStorage.getItem("dadoRecipeBook") || "[]"
+    );
+
+    const totalPages = Math.ceil(recipeBook.length / 4);
+
+    recipeBookPage += direction;
+
+    recipeBookPage = Math.max(
+        0,
+        Math.min(recipeBookPage, totalPages - 1)
+    );
+
+    renderRecipeBook();
+
+}
+
+
+/* 상세 정보에서 책으로 돌아가기 */
+
+function closeRecipeDetail() {
+
+    openedRecipeDetail = null;
+    renderRecipeBook();
+
+}
+
+
+/* 레시피 북 닫기 */
+
+function closeRecipeBook() {
+
+    document.getElementById("recipeBookModal").style.display = "none";
+
+    openedRecipeDetail = null;
+
+}
+
+
+/* dado customer chat */
+
+const dadoCustomerReplies = [
+
+    {
+        keywords: ["머리", "두통", "아파", "통증", "배가", "아픈"],
+        replies: [
+            "오 어디가 아파요? 다도 어던 약이 필요한지 알고 싶어요.",
+            "아픔이 잇어요? 다도 적절한 재료를 찾아 볼게요.",
+            "음 아픈 곳을 조금 더 자세히 설명해 주어요."
+        ]
+    },
+
+    {
+        keywords: ["잠", "수면", "불면", "굼"],
+        replies: [
+            "오 잠이 필요해요? 다도 달빛 재료 잇어요.",
+            "잠을 잘 못 자요? 다도 굼에 좋은 약 만들 수 잇어요.",
+            "다도 잠을 잘 자는 약 생각해요. 어던 굼을 구고 싶어요?"
+        ]
+    },
+
+    {
+        keywords: ["머리카락", "머리 자라", "탈모", "대머리", "hair"],
+        replies: [
+            "머리카락이 필요해요? 다도 특별한 약 잇어요.",
+            "오 머리 자라나요? 다도 재료 목록 확인해요.",
+            "다도 머리카락 관련 약 만들 수 잇어요. 아마도요."
+        ]
+    },
+
+    {
+        keywords: ["기억", "잊어", "기억나"],
+        replies: [
+            "기억을 찾고 싶어요? 어던 기억이에요?",
+            "다도 기억에 좋은 약 만들 수 잇어요. 오래된 기억도 괜찮아요.",
+            "오 기억이 사라졋어요? 다도 조금 걱정돼요."
+        ]
+    },
+
+    {
+        keywords: ["죽은", "부활", "되살", "살려"],
+        replies: [
+            "음 다도 지금 재고 확인해요. 잠시 기다려요",
+            "그 약은 조금 특별한 주문이에요. 다도 생각해 볼게요.",
+            "다도 그런 약은 아직 판매 목록에 없어요."
+        ]
+    },
+
+    {
+        keywords: ["행복", "기분", "슬퍼", "우울", "외로"],
+        replies: [
+            "오 마음이 조금 힘들어요? 다도 달콤한 약 만들어요",
+            "기분이 좋아지는 약 잇어요. 다도 자신 잇어요",
+            "다도 솜사탕 재료 추천해요. 폭신폭신해요"
+        ]
+    },
+
+    {
+        keywords: ["가격", "얼마", "비용"],
+        replies: [
+            "가격은 약마다 달라요. 다도 상품 목록 보여 줄게요",
+            "다도 좋은 가격으로 판매해요. 상품 페이지 확인해요",
+            "오. 돈 이야기 좋아요. 다도 자본주의자에요"
+        ]
+    },
+
+    {
+        keywords: ["주문", "구매", "사고 싶", "사고싶"],
+        replies: [
+            "오 주문하고 싶어요? 다도 상품 페이지 안내해요",
+            "다도 주문 기다리고 잇어요. 어던 약이 필요해요?",
+            "좋아요. 다도 택배 상자 준비해요"
+        ]
+    },
+
+    {
+        keywords: ["배송", "택배", "운송"],
+        replies: [
+            "다도 아마존 프라임 잇어요. 운송비 안내요",
+            "배송은 주문 확인 후 진행해요",
+            "다도 약 안전하게 포장해요"
+        ]
+    },
+
+    {
+        keywords: ["환불", "취소", "반품"],
+        replies: [
+            "오 환불이에요? 다도 주문 정보를 확인해야 해요",
+            "다도 환불 정책 확인해요. 잠시 기다려요.",
+            "어던 상품에 문제가 잇어요?"
+        ]
+    },
+
+    {
+        keywords: ["안녕", "하이", "hello", "hi"],
+        replies: [
+            "안녕 고객님 다도 약국에 와 주어서 고마워요.",
+            "오 고객님 왓어요. 무엇이 필요해요?",
+            "안녕 다도 오늘도 약 만들어요."
+        ]
+    },
+
+    {
+        keywords: ["고마", "감사"],
+        replies: [
+            "천만에요. 다도 도움이 되어 기버요.",
+            "고객님 다도 도 찾아와요.",
+            "다도 고마워요. 좋은 하루 보내요."
+        ]
+    }
+
+];
+
+
+/* 다도 답변 찾기 */
+
+function getDadoCustomerReply(message) {
+
+    const text = message.toLowerCase();
+
+    // 배송 문의인지 확인
+    const isDeliveryQuestion =
+        ["배송", "택배", "운송", "어디쯤", "도착"].some(
+            keyword => text.includes(keyword)
+        );
+
+    // 배송 문의라면 실제 주문 내역 확인
+    if (isDeliveryQuestion) {
+
+        if (orders.length === 0) {
+            return "너 아직 주문 내역이 없어요. 먼저 다도 약국에서 주문해 봐요";
+        }
+
+        const order = orders[0];
+
+        const deliverySteps = [
+            "주문 접수",
+            "상품 준비 중",
+            "포장 완료",
+            "배송 중",
+            "배송 완료"
+        ];
+
+        let currentStep = 0;
+
+        if (order.createdAt) {
+            const elapsedMinutes =
+                (Date.now() - order.createdAt) / 60000;
+
+            currentStep = Math.min(
+                4,
+                Math.floor(elapsedMinutes)
+            );
+        }
+
+        const productNames = order.items
+            .map(item => item.name)
+            .join(", ");
+
+        return `너 최근 주문 확인햇어요\n
+
+주문 번호: ${order.number}\n
+주문 상품: ${productNames}\n
+현재 상태: ${deliverySteps[currentStep]}\n
+택배사: ${order.carrier || "dado delivery"}\n
+담당 배송원: ${order.deliveryman || "dadodeliveryman"}\n
+
+다도 주문 잘 확인햇어요`;
+    }
+
+    // 기존 키워드 답변
+    const matchedRule = dadoCustomerReplies.find(rule =>
+        rule.keywords.some(keyword => text.includes(keyword))
+    );
+
+    if (matchedRule) {
+        const replies = matchedRule.replies;
+        return replies[Math.floor(Math.random() * replies.length)];
+    }
+
+    const defaultReplies = [
+        "오 그래요? 다도 조금 더 자세히 알고 싶어요",
+        "음 다도 무슨 말인지 조금 헷갈려요. 다시 말해 주어요.",
+        "다도 그런 약은 잘 모르겟어요. 어던 효과를 원해요?",
+        "고객님 원하는 약을 조금 더 설명해 주어요",
+        "오 흥미로운 이야기네요. 다도 생각해 볼게요"
+    ];
+
+    return defaultReplies[
+        Math.floor(Math.random() * defaultReplies.length)
+    ];
+}
+
+
+
+/* 채팅 메시지 추가 */
+
+
+function addCustomerChatMessage(message, sender) {
+
+    const chat = document.getElementById("customerChatMessages");
+
+    const bubble = document.createElement("div");
+    bubble.className = "chat-message " + sender;
+
+    const senderName = document.createElement("span");
+    senderName.className = "chat-sender";
+    senderName.textContent = sender === "dado-message" ? "dado" : "you";
+
+    const messageText = document.createElement("div");
+    messageText.className = "chat-message-text";
+    if (sender === "dado-message" && message.includes("너 최근 주문 확인햇어요")) {
+    messageText.style.whiteSpace = "pre-line";
+} else {
+    messageText.style.whiteSpace = "normal";
+}
+
+messageText.textContent = message;
+
+    const time = document.createElement("span");
+    time.className = "chat-message-time";
+
+    time.textContent = new Date().toLocaleTimeString("ko-KR", {
+        hour: "numeric",
+        minute: "2-digit",
+        hour12: true
+    });
+
+    bubble.appendChild(senderName);
+    bubble.appendChild(messageText);
+    bubble.appendChild(time);
+
+    chat.appendChild(bubble);
+    chat.scrollTop = chat.scrollHeight;
+}
+
+
+
+/* 고객 메시지 전송 */
+
+
+function sendCustomerMessage() {
+
+    const input = document.getElementById("customerChatInput");
+    const chat = document.getElementById("customerChatMessages");
+
+    const message = input.value.trim();
+
+    if (!message) return;
+
+    // 고객 메시지 표시
+    addCustomerChatMessage(message, "user-message");
+
+    input.value = "";
+
+    // 다도 입력 중 표시
+    const typing = document.createElement("div");
+    typing.className = "chat-message dado-message chat-typing";
+    typing.textContent = "안녕나는다도에요 입력 중...";
+    chat.appendChild(typing);
+
+    chat.scrollTop = chat.scrollHeight;
+
+    // 잠시 후 다도 답변
+    setTimeout(function() {
+
+        typing.remove();
+
+        const reply = getDadoCustomerReply(message);
+        addCustomerChatMessage(reply, "dado-message");
+
+    }, 1000);
+
+}
+
+
+
+/* 엔터 키로도 전송 */
+
+document.getElementById("customerChatInput").addEventListener(
+    "keydown",
+    function(event) {
+        if (event.key === "Enter") {
+            sendCustomerMessage();
+        }
+    }
+);
+
+
+
+/* 방명록 랜덤 닉네임 */
+
+function makeGuestNickname() {
+    const adjectives = [
+        "말랑한", "졸린", "수상한", "행복한",
+        "조용한", "달콤한", "외로운", "반작이는",
+        "느긋한", "이상한", "작은", "푸른"
+    ];
+
+    const nouns = [
+        "복숭아", "구름", "푸딩", "산책자",
+        "우체부", "별사탕", "손님", "수집가",
+        "고양이", "달빛", "정원사", "나그네"
+    ];
+
+    const a = adjectives[Math.floor(Math.random() * adjectives.length)];
+    const n = nouns[Math.floor(Math.random() * nouns.length)];
+
+    return a + n;
+}
+
+
+/* 후기 작성 당시의 이름 가져오기 */
+
+function getReviewNickname() {
+
+    if (
+        membership &&
+        membership.name &&
+        membership.name.trim() !== "" &&
+        membership.name !== "dear friend"
+    ) {
+        return membership.name;
+    }
+
+    return makeGuestNickname();
+}
+
+
+/* 기본 후기 데이터 */
+
+const defaultGuestbookReviews = [
+    {
+        content: "약이 정말 마음에 들어요! 다음에도 이용할게요",
+        product: "cloud walker",
+        date: "2026. 11. 02",
+        rating: 5
+    },
+    {
+        content: "다도 덕분에 요즘 매일 운이 좋음. 고마워요",
+        product: "unlucky shield",
+        date: "2026. 11. 03",
+        rating: 5
+    },
+    {
+        content: "배송이 빠릅니다. 포장도 예쁘고 마음에 들어요.",
+        product: "sleepy sleepy",
+        date: "2026. 11. 03",
+        rating: 5
+    },
+    {
+        content: "저희 가족 모두 행복해졌어요 이제 아무도 울지 않아요 :)",
+        product: "joy ride x 4",
+        date: "2026. 11. 04",
+        rating: 5
+    },
+    {
+        content: "처음에는 조금 무서웠는데 효과는 확실하네요!",
+        product: "heart warmer",
+        date: "2026. 11. 05",
+        rating: 4
+    },
+    {
+        content: "저번에 주문한 것과 같은 상품으로 보내 주세요 이번에는 꼭 제대로요 제발제발제발제발",
+        product: "[custom-made order]",
+        date: "2026. 11. 05",
+        rating: 3
+    }
+];
+
+
+/* 저장된 후기 불러오기 */
+
+let guestbookReviews = JSON.parse(
+    localStorage.getItem("dadoGuestbookReviews") || "null"
+);
+
+if (!guestbookReviews) {
+    guestbookReviews = defaultGuestbookReviews;
+}
+
+
+/* 닉네임이 없는 기존 후기에는 한 번만 닉네임 부여 */
+
+guestbookReviews.forEach(review => {
+    if (!review.nickname) {
+        review.nickname = makeGuestNickname();
+    }
+});
+
+
+/* 후기 저장 */
+
+function saveGuestbookReviews() {
+    localStorage.setItem(
+        "dadoGuestbookReviews",
+        JSON.stringify(guestbookReviews)
+    );
+}
+
+
+/* HTML 특수문자 처리 */
+
+function escapeGuestbookText(text) {
+    return String(text).replace(/[&<>"']/g, char => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#039;"
+    })[char]);
+}
+
+
+/* 후기 작성 */
+
+function submitGuestReview() {
+
+    const contentInput = document.getElementById("reviewContent");
+    const ratingInput = document.getElementById("reviewRating");
+    const productInput = document.getElementById("reviewProduct");
+
+    const content = contentInput.value.trim();
+    const product = productInput.value;
+
+    if (!content) {
+        contentInput.focus();
+        return;
+    }
+
+    const newReview = {
+        nickname: getReviewNickname(),
+        content: content,
+        product: product,
+        date: new Date().toLocaleDateString("ko-KR"),
+        rating: Number(ratingInput.value)
+    };
+
+    guestbookReviews.unshift(newReview);
+
+    saveGuestbookReviews();
+    renderGuestbook();
+
+    contentInput.value = "";
+    ratingInput.value = "5";
+    productInput.value = "";
+}
+
+
+/* 방명록 출력 */
+
+function renderGuestbook() {
+
+    const list = document.getElementById("guestbookList");
+
+    if (!list) return;
+
+    list.innerHTML = guestbookReviews.map(review => {
+
+        return `
+            <div class="guestbook-card">
+
+                <div class="guestbook-top">
+                    <strong>${escapeGuestbookText(review.nickname)}</strong>
+                    <span>${escapeGuestbookText(review.date)}</span>
+                </div>
+
+                <div class="guestbook-stars">
+                    ${"★".repeat(review.rating)}${"☆".repeat(5 - review.rating)}
+                </div>
+
+                <p>${escapeGuestbookText(review.content)}</p>
+
+                ${review.product ? `
+                    <div class="guestbook-product">
+                        구매 상품 : ${escapeGuestbookText(review.product)}
+                    </div>
+                ` : ""}
+
+            </div>
+        `;
+    }).join("");
+}
+
+
+/* 기존 후기 닉네임도 저장 */
+
+saveGuestbookReviews();
+
+renderGuestbook();
+
+renderReviewProductOptions();
+
+</script>
+
+</body>
+</html>
